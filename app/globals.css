@@ -29,7 +29,7 @@ html {
 
 body {
   margin: 0;
-  background: var(--background);
+  background: #eef1f5;
   color: var(--foreground);
   font-family: "Geologica", Arial, Helvetica, sans-serif;
 }
@@ -46,7 +46,9 @@ img {
 
 .page-shell {
   position: relative;
-  width: min(100%, 1180px);
+  width: 393px;
+  max-width: 100%;
+  min-height: 100vh;
   margin: 0 auto;
   overflow: hidden;
   background:
@@ -64,7 +66,7 @@ img {
 
 .hero {
   position: relative;
-  min-height: 720px;
+  min-height: 680px;
   padding: 20px 17px 44px;
   text-align: center;
 }
@@ -104,7 +106,7 @@ h1 {
   justify-items: center;
   gap: 4px;
   color: var(--pink);
-  font-size: clamp(30px, 8vw, 76px);
+  font-size: 30px;
 }
 
 h1 mark {
@@ -113,14 +115,15 @@ h1 mark {
   border-radius: 999px;
   background: linear-gradient(94deg, var(--lime), #daff27);
   color: #000000;
+  font-size: 42px;
   transform: rotate(-0.8deg);
 }
 
 .hero__lead {
-  width: min(100%, 620px);
+  width: 100%;
   margin: 18px auto 28px;
   color: #000000;
-  font-size: clamp(14px, 4vw, 22px);
+  font-size: 14px;
   line-height: 1.35;
 }
 
@@ -129,7 +132,7 @@ h1 mark {
   grid-template-columns: minmax(0, 1fr) minmax(168px, 0.9fr);
   gap: 8px;
   align-items: stretch;
-  width: min(100%, 760px);
+  width: 100%;
   margin: 0 auto 22px;
 }
 
@@ -266,7 +269,7 @@ h1 mark {
 .stats-strip strong {
   color: var(--lime);
   font-family: "Unbounded", Arial, Helvetica, sans-serif;
-  font-size: clamp(18px, 5vw, 34px);
+  font-size: 18px;
   line-height: 1;
 }
 
@@ -299,9 +302,9 @@ h1 mark {
 }
 
 .section-heading h2 {
-  max-width: 820px;
+  max-width: 340px;
   color: var(--pink);
-  font-size: clamp(30px, 8vw, 58px);
+  font-size: 32px;
 }
 
 .skills-grid {
@@ -336,7 +339,7 @@ h1 mark {
 .skill p {
   margin: 0;
   font-family: "Unbounded", Arial, Helvetica, sans-serif;
-  font-size: clamp(15px, 4vw, 22px);
+  font-size: 15px;
   font-weight: 700;
   line-height: 1.18;
   text-transform: uppercase;
@@ -520,7 +523,7 @@ h1 mark {
 .register h2 {
   margin-bottom: 16px;
   color: #ffffff;
-  font-size: clamp(30px, 8vw, 58px);
+  font-size: 32px;
 }
 
 .register p:not(.profession) {
@@ -554,7 +557,7 @@ h1 mark {
 .timer strong,
 .timer i {
   font-family: "Unbounded", Arial, Helvetica, sans-serif;
-  font-size: clamp(34px, 9vw, 58px);
+  font-size: 40px;
   font-style: normal;
   line-height: 1;
 }
@@ -566,70 +569,6 @@ h1 mark {
   text-transform: uppercase;
 }
 
-@media (min-width: 720px) {
-  .hero {
-    padding: 28px 42px 70px;
-  }
-
-  .hero__grid {
-    grid-template-columns: 0.85fr 1fr;
-    gap: 18px;
-  }
-
-  .benefit-card {
-    padding: 28px;
-  }
-
-  .benefit p {
-    font-size: 16px;
-  }
-
-  .portrait-card,
-  .portrait-card img {
-    min-height: 430px;
-  }
-
-  .stats-strip,
-  .section,
-  .pink-section,
-  .register {
-    padding-inline: 42px;
-  }
-
-  .skills-grid,
-  .audience-list,
-  .image-mosaic,
-  .steps {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .register {
-    grid-template-columns: 1.15fr 0.85fr;
-    min-height: 460px;
-  }
-}
-
-@media (min-width: 1020px) {
-  .hero {
-    min-height: auto;
-  }
-
-  .skills-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .audience-list {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .audience-card {
-    min-height: 510px;
-  }
-
-  .image-mosaic {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
 
 @media (max-width: 390px) {
   .hero__grid,

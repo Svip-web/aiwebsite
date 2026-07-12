@@ -75,20 +75,26 @@ const steps = [
 ];
 
 function useCountdown() {
-  const target = useMemo(() => Date.now() + 1000 * 60 * 60 * 12 + 1000 * 60 * 34, []);
-  const [remaining, setRemaining] = useState(target - Date.now());
+  const duration = useMemo(() => 1000 * 60 * 60 * 12 + 1000 * 60 * 34, []);
+  const [target, setTarget] = useState<number | null>(null);
+  const [remaining, setRemaining] = useState(duration);
 
   useEffect(() => {
+    const nextTarget = Date.now() + duration;
+    setTarget(nextTarget);
+    setRemaining(nextTarget - Date.now());
+
     const timer = window.setInterval(() => {
-      setRemaining(Math.max(0, target - Date.now()));
+      setRemaining(Math.max(0, nextTarget - Date.now()));
     }, 1000);
 
     return () => window.clearInterval(timer);
-  }, [target]);
+  }, [duration]);
 
-  const hours = Math.floor(remaining / 1000 / 60 / 60);
-  const minutes = Math.floor((remaining / 1000 / 60) % 60);
-  const seconds = Math.floor((remaining / 1000) % 60);
+  const safeRemaining = target === null ? duration : remaining;
+  const hours = Math.floor(safeRemaining / 1000 / 60 / 60);
+  const minutes = Math.floor((safeRemaining / 1000 / 60) % 60);
+  const seconds = Math.floor((safeRemaining / 1000) % 60);
 
   return [hours, minutes, seconds].map((value) => String(value).padStart(2, "0"));
 }
