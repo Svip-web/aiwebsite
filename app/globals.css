@@ -92,15 +92,12 @@ img {
 }
 
 .hero {
+  position: relative;
+  left: 50%;
+  width: 393px;
+  min-width: 393px;
+  transform: translateX(-50%);
   text-align: center;
-}
-
-/* Keep the designed 360px hero composition intact on narrow phones. */
-@media (max-width: 359px) {
-  .hero {
-    width: 360px;
-    min-width: 360px;
-  }
 }
 
 .topPill {
@@ -1255,17 +1252,5 @@ h3 {
   .hero h1,
   .final h2 {
     font-size: 26px;
-  }
-
-  .heroContent {
-    grid-template-columns: 1fr;
-  }
-
-  .heroBenefits {
-    order: 2;
-  }
-
-  .heroPhoto {
-    order: 1;
   }
 }
