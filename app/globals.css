@@ -1012,7 +1012,7 @@ h3 {
   width: 520px;
   height: 678px;
   transform: translateX(-50%);
-  background: url("../figma-assets/results-typewriter.png") center top / 520px auto no-repeat;
+  background: url("/aiwebsite/figma-assets/results-typewriter.png") center top / 520px auto no-repeat;
   pointer-events: none;
 }
 
