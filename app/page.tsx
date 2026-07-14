@@ -1,52 +1,108 @@
-const arrowImage = "/figma-assets/arrow.png";
-const heroImage = "/figma-assets/hero.png";
+"use client";
+
+import { useEffect, useRef, useState, type ReactNode } from "react";
+
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+
+const arrowImage = asset("figma-assets/arrow.png");
+const heroImage = asset("figma-assets/hero-main.png");
 
 const lessonImages = [
-  "/figma-assets/gallery-1.png",
-  "/figma-assets/audience-2.png",
-  "/figma-assets/hero.png",
+  asset("figma-assets/lesson-1.png"),
+  asset("figma-assets/lesson-2.png"),
+  asset("figma-assets/lesson-3.png"),
 ];
 
-const faceImages = [
-  "/figma-assets/hero.png",
-  "/figma-assets/audience-1.png",
-  "/figma-assets/audience-3.png",
-  "/figma-assets/audience-4.png",
-  "/figma-assets/gallery-6.png",
+const exampleSlides = [
+  asset("figma-assets/gallery-4.png"),
+  asset("figma-assets/gallery-5.png"),
+  asset("figma-assets/gallery-3.png"),
+];
+
+const studentSlides = [
+  asset("figma-assets/student-1.png"),
+  asset("figma-assets/student-2.png"),
+  asset("figma-assets/student-3.png"),
+  asset("figma-assets/student-4.png"),
+  asset("figma-assets/student-5.png"),
+  asset("figma-assets/student-6.png"),
+];
+
+const heroBenefits = [
+  {
+    icon: asset("figma-assets/benefit-fire.svg"),
+    text: (
+      <>
+        <b>Получай первые заказы</b> уже во время обучения
+      </>
+    ),
+  },
+  {
+    icon: asset("figma-assets/benefit-laptop.svg"),
+    text: (
+      <>
+        Работай из <b>любой точки мира</b>
+      </>
+    ),
+  },
+  {
+    icon: asset("figma-assets/benefit-heart.svg"),
+    text: (
+      <>
+        Освой современную <b>AI-профессию</b> без технического опыта
+      </>
+    ),
+  },
+  {
+    icon: asset("figma-assets/benefit-wallet.svg"),
+    text: (
+      <>
+        Твои работы <b>будут покупать</b> компании и эксперты
+      </>
+    ),
+  },
 ];
 
 const audienceCards = [
   {
-    image: "/figma-assets/audience-1.png",
+    image: asset("figma-assets/audience-1.png"),
     title: "Для новичков без опыта",
-    text: "Если вы хотите освоить востребованную AI-профессию и начать зарабатывать на создании контента для бизнеса и брендов.",
+    text: (
+      <><strong>Если вы хотите освоить востребованную AI-профессию</strong> и начать зарабатывать на создании контента для бизнеса и брендов.</>
+    ),
   },
   {
-    image: "/figma-assets/audience-2.png",
+    image: asset("figma-assets/audience-2.png"),
     title: "Для тех, кто хочет сменить профессию",
-    text: "Если вы ищете современное направление с возможностью удалённой работы и доходом от 500€ до 3000€+.",
+    text: (
+      <>Если вы ищете современное направление с возможностью удалённой работы и доходом от <strong>500€ до 3000€+.</strong></>
+    ),
   },
   {
-    image: "/figma-assets/audience-4.png",
+    image: asset("figma-assets/audience-4.png"),
     title: "Для экспертов и фрилансеров",
-    text: "Если хотите использовать AI для создания фото, Reels, сторис и контента быстрее, качественнее и выгоднее.",
+    text: (
+      <>Если хотите использовать AI для создания фото, Reels, сторис и контента <strong>быстрее, качественнее и выгоднее.</strong></>
+    ),
   },
   {
-    image: "/figma-assets/gallery-3.png",
+    image: asset("figma-assets/gallery-3.png"),
     title: "Для тех, кто хочет работать на себя",
-    text: "Получать клиентов из Европы, США и других стран, работая из любой точки мира.",
+    text: (
+      <><strong>Получать клиентов из Европы, США и других стран,</strong> работая из любой точки мира.</>
+    ),
   },
 ];
 
 const goals = [
-  "Создавать AI-контент для брендов и экспертов за считанные минуты",
-  "Освоить профессию AI Smart Creator и выйти на доход от 500€ до 3000€+",
-  "Чтобы твои работы покупали бизнесы, блогеры и бренды",
-  "Создавать фото, Reels, сторис и контент без команды и больших затрат",
-  "Получить первых клиентов и заказы уже во время обучения",
-  "Продавать не картинки, а готовые контент-пакеты для бизнеса",
-  "Работать из любой точки мира и строить удалённую карьеру",
-  "Освоить одну из самых востребованных AI-профессий 2026 года",
+  <>Создавать <strong>AI-контент</strong> для брендов и экспертов за считанные минуты</>,
+  <>Освоить профессию AI Smart Creator и выйти на доход <strong>от 500€ до 3000€+</strong></>,
+  <>Чтобы <strong>твои работы покупали</strong> бизнесы, блогеры и бренды</>,
+  <>Создавать фото, Reels, сторис и контент без команды и больших затрат</>,
+  <>Получить первых клиентов и заказы <strong>уже во время обучения</strong></>,
+  <>Продавать не картинки, а <strong>готовые контент-пакеты</strong> для бизнеса</>,
+  <>Работать из <strong>любой точки мира</strong> и строить удалённую карьеру</>,
+  <>Освоить <strong>одну из самых востребованных</strong> AI-профессий 2026 года</>,
 ];
 
 const hostFacts = [
@@ -60,28 +116,28 @@ const hostFacts = [
 
 const practiceCards = [
   {
-    image: "/figma-assets/gallery-4.png",
+    image: asset("figma-assets/practice-invitation.png"),
     title: "Создание AI-фото для брендов",
-    text: "Для кого: бренды, эксперты, магазины",
+    text: <>Для кого: <strong>бренды, эксперты, магазины</strong></>,
   },
   {
-    image: "/figma-assets/gallery-5.png",
+    image: asset("figma-assets/gallery-5.png"),
     title: "AI-фотосессии без студии",
-    text: "Для кого: личный бренд, блогеры, бизнес",
+    text: <>Для кого: <strong>личный бренд, блогеры, бизнес</strong></>,
   },
   {
-    image: "/figma-assets/gallery-3.png",
+    image: asset("figma-assets/gallery-3.png"),
     title: "Контент для социальных сетей",
-    text: "Для кого: эксперты, компании, локальный бизнес",
+    text: <>Для кого: <strong>эксперты, компании, локальный бизнес</strong></>,
   },
 ];
 
 const resultItems = [
-  ["Поймёте,", "как работает профессия AI Smart Creator"],
-  ["Узнаете,", "какие AI-услуги сегодня покупают бизнесы и бренды"],
-  ["Разберётесь,", "где искать первых клиентов и получать заказы"],
-  ["Увидите,", "как создавать контент, за который готовы платить"],
-  ["Получите", "пошаговый план выхода на доход от 500€ до 3000€+"],
+  <>Поймёте, <strong>как работает профессия</strong> AI Smart Creator</>,
+  <>Узнаете, <strong>какие AI-услуги сегодня покупают бизнесы</strong> и бренды</>,
+  <>Разберётесь, <strong>где искать первых клиентов</strong> и получать заказы</>,
+  <>Увидите, как создавать контент, <strong>за который готовы платить</strong></>,
+  <>Получите пошаговый план выхода на <strong>доход от 500€ до 3000€+</strong></>,
 ];
 
 function CtaButton() {
@@ -99,10 +155,12 @@ function LessonCard({
   label,
   title,
   image,
+  tall = false,
 }: {
   label: string;
-  title: string;
+  title: ReactNode;
   image: string;
+  tall?: boolean;
 }) {
   return (
     <article className="lessonCard">
@@ -110,15 +168,216 @@ function LessonCard({
         <span>{label}</span>
         <h3>{title}</h3>
       </div>
-      <div className="lockedPreview">
+      <div className={tall ? "lockedPreview lockedPreview--tall" : "lockedPreview"}>
         <img src={image} alt="" />
-        <b aria-hidden="true">lock</b>
       </div>
     </article>
   );
 }
 
+function ExampleSlider() {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [slideDirection, setSlideDirection] = useState<"next" | "previous">("next");
+  const swipeStart = useRef<number | null>(null);
+  const slideImage = useRef<HTMLImageElement | null>(null);
+  const previousSlide = () => {
+    setSlideDirection("previous");
+    setActiveSlide((slide) => (slide - 1 + exampleSlides.length) % exampleSlides.length);
+  };
+  const nextSlide = () => {
+    setSlideDirection("next");
+    setActiveSlide((slide) => (slide + 1) % exampleSlides.length);
+  };
+
+  const finishSwipe = (endX: number) => {
+    if (swipeStart.current === null) return;
+    const distance = endX - swipeStart.current;
+    swipeStart.current = null;
+    const image = slideImage.current;
+
+    if (Math.abs(distance) < 40) {
+      if (image) {
+        image.style.transition = "transform 220ms cubic-bezier(0.22, 0.8, 0.24, 1)";
+        image.style.transform = "translateX(0)";
+      }
+      return;
+    }
+
+    if (image) {
+      image.style.transition = "";
+      image.style.transform = "translateX(0)";
+    }
+    if (distance > 0) previousSlide();
+    else nextSlide();
+  };
+
+  return (
+    <>
+      <div
+        className="videoBox"
+        onPointerDown={(event) => {
+          swipeStart.current = event.clientX;
+          if (slideImage.current) slideImage.current.style.transition = "none";
+          event.currentTarget.setPointerCapture(event.pointerId);
+        }}
+        onPointerMove={(event) => {
+          if (swipeStart.current === null) return;
+          const distance = Math.max(-110, Math.min(110, event.clientX - swipeStart.current));
+          if (slideImage.current) slideImage.current.style.transform = `translateX(${distance}px)`;
+        }}
+        onPointerUp={(event) => finishSwipe(event.clientX)}
+        onPointerCancel={() => {
+          swipeStart.current = null;
+          if (slideImage.current) {
+            slideImage.current.style.transition = "transform 220ms cubic-bezier(0.22, 0.8, 0.24, 1)";
+            slideImage.current.style.transform = "translateX(0)";
+          }
+        }}
+      >
+        <img
+          ref={slideImage}
+          key={`${activeSlide}-${slideDirection}`}
+          className={`exampleSlide exampleSlide--${slideDirection}`}
+          src={exampleSlides[activeSlide]}
+          alt={`Приклад AI-контенту ${activeSlide + 1}`}
+          draggable={false}
+        />
+        <button className="playButton" type="button" aria-label="Відтворити приклад">
+          <img src={asset("figma-assets/play.svg")} alt="" />
+        </button>
+      </div>
+      <div className="arrows">
+        <button type="button" aria-label="Попередній приклад" onClick={previousSlide}><img src={asset("figma-assets/arrow-left.svg")} alt="" /></button>
+        <button type="button" aria-label="Наступний приклад" onClick={nextSlide}><img src={asset("figma-assets/arrow-right.svg")} alt="" /></button>
+      </div>
+    </>
+  );
+}
+
+function StudentSlider() {
+  const [activeSlide, setActiveSlide] = useState(2);
+  const [slideDirection, setSlideDirection] = useState<"next" | "previous">("next");
+  const swipeStart = useRef<number | null>(null);
+  const slideImage = useRef<HTMLImageElement | null>(null);
+  const previousSlide = () => {
+    setSlideDirection("previous");
+    setActiveSlide((slide) => (slide - 1 + studentSlides.length) % studentSlides.length);
+  };
+  const nextSlide = () => {
+    setSlideDirection("next");
+    setActiveSlide((slide) => (slide + 1) % studentSlides.length);
+  };
+
+  const finishSwipe = (endX: number) => {
+    if (swipeStart.current === null) return;
+    const distance = endX - swipeStart.current;
+    swipeStart.current = null;
+    const image = slideImage.current;
+
+    if (Math.abs(distance) < 40) {
+      if (image) {
+        image.style.transition = "transform 220ms cubic-bezier(0.22, 0.8, 0.24, 1)";
+        image.style.transform = "translateX(0)";
+      }
+      return;
+    }
+
+    if (image) {
+      image.style.transition = "";
+      image.style.transform = "translateX(0)";
+    }
+    if (distance > 0) previousSlide();
+    else nextSlide();
+  };
+
+  return (
+    <div className="studentSlider">
+      <div
+        className="studentViewport"
+        onPointerDown={(event) => {
+          swipeStart.current = event.clientX;
+          if (slideImage.current) slideImage.current.style.transition = "none";
+          event.currentTarget.setPointerCapture(event.pointerId);
+        }}
+        onPointerMove={(event) => {
+          if (swipeStart.current === null) return;
+          const distance = Math.max(-110, Math.min(110, event.clientX - swipeStart.current));
+          if (slideImage.current) slideImage.current.style.transform = `translateX(${distance}px)`;
+        }}
+        onPointerUp={(event) => finishSwipe(event.clientX)}
+        onPointerCancel={() => {
+          swipeStart.current = null;
+          if (slideImage.current) {
+            slideImage.current.style.transition = "transform 220ms cubic-bezier(0.22, 0.8, 0.24, 1)";
+            slideImage.current.style.transform = "translateX(0)";
+          }
+        }}
+      >
+        <img
+          ref={slideImage}
+          key={`${activeSlide}-${slideDirection}`}
+          className={`studentSlide studentSlide--${slideDirection}`}
+          src={studentSlides[activeSlide]}
+          alt={`Кейс учениці ${activeSlide + 1}`}
+          draggable={false}
+        />
+      </div>
+      <div className="studentArrows">
+        <button type="button" aria-label="Попередній кейс" onClick={previousSlide}><img src={asset("figma-assets/arrow-left.svg")} alt="" /></button>
+        <button type="button" aria-label="Наступний кейс" onClick={nextSlide}><img src={asset("figma-assets/arrow-right.svg")} alt="" /></button>
+      </div>
+    </div>
+  );
+}
+
+function CountdownTimer() {
+  const [remainingSeconds, setRemainingSeconds] = useState(5 * 60 + 50);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setRemainingSeconds((seconds) => Math.max(0, seconds - 1));
+    }, 1000);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const hours = Math.floor(remainingSeconds / 3600);
+  const minutes = Math.floor((remainingSeconds % 3600) / 60);
+  const seconds = remainingSeconds % 60;
+  const format = (value: number) => value.toString().padStart(2, "0");
+
+  return (
+    <div className="timer" aria-live="polite" aria-label="Зворотний таймер">
+      <div className="timerDigits">
+        <span>{format(hours)}</span><b>:</b><span>{format(minutes)}</span><b>:</b><span>{format(seconds)}</span>
+      </div>
+      <div className="timerLabels"><span>год</span><span>хв</span><span>сек</span></div>
+    </div>
+  );
+}
+
 export default function Home() {
+  useEffect(() => {
+    const sections = Array.from(document.querySelectorAll<HTMLElement>(".page > section"));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("isVisible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+    );
+
+    sections.forEach((section) => {
+      section.classList.add("scrollReveal");
+      observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main className="page">
       <section className="hero bgGrid">
@@ -129,7 +388,7 @@ export default function Home() {
         <p className="profession">Профессия 2026</p>
         <h1>AI Smart Creator</h1>
         <div className="zeroTitle">
-          <span aria-hidden="true">↳</span>
+          <img className="turnArrow" src={asset("figma-assets/arrow-turn.svg")} alt="" aria-hidden="true" />
           <strong>с нуля</strong>
         </div>
         <p className="heroLead">
@@ -139,10 +398,12 @@ export default function Home() {
 
         <div className="heroContent">
           <div className="heroBenefits">
-            <p><b>Получай первые заказы</b> уже во время обучения</p>
-            <p>Работай из <b>любой точки мира</b></p>
-            <p>Освой современную <b>AI-профессию</b> без технического опыта</p>
-            <p>Твои работы <b>будут покупать</b> компании и эксперты</p>
+            {heroBenefits.map((benefit) => (
+              <p key={benefit.icon}>
+                <img src={benefit.icon} alt="" aria-hidden="true" />
+                <span>{benefit.text}</span>
+              </p>
+            ))}
           </div>
           <div className="heroPhoto">
             <img src={heroImage} alt="AI Smart Creator" />
@@ -152,24 +413,32 @@ export default function Home() {
       </section>
 
       <section className="bonus pinkPanel">
-        <div className="giftIcon">▣</div>
+        <img className="giftIcon" src={asset("figma-assets/gift-icon.svg")} alt="" aria-hidden="true" />
         <p className="pinkText">Первые 100 зарегистрировавшихся</p>
         <h2>Получат бонус</h2>
         <p className="bonusLead">
           <b>3 бесплатных видео</b> о том, как начать зарабатывать на AI-контенте
         </p>
         <div className="lessons">
-          <LessonCard label="Урок 1:" title="Хто такі AI-креатори." image={lessonImages[0]} />
-          <LessonCard label="Урок 2:" title="Хто і за що платить AI-креаторам." image={lessonImages[1]} />
-          <LessonCard label="Урок 3:" title="Проекти, які можна виконувати без досвіду." image={lessonImages[2]} />
+          <LessonCard
+            label="Урок 1:"
+            title={<>Хто такі <strong>AI-креатори.</strong></>}
+            image={lessonImages[0]}
+          />
+          <LessonCard
+            label="Урок 2:"
+            title={<>Хто і за що <strong>платить AI-креаторам.</strong></>}
+            image={lessonImages[1]}
+          />
+          <LessonCard
+            label="Урок 3:"
+            title={<>Проекти, які можна <strong>виконувати без досвіду.</strong></>}
+            image={lessonImages[2]}
+            tall
+          />
         </div>
         <div className="people">
-          <div className="faces">
-            {faceImages.map((image, index) => (
-              <img key={`${image}-${index}`} src={image} alt="" />
-            ))}
-            <span>+</span>
-          </div>
+          <img className="faces" src={asset("figma-assets/people-group.png")} alt="" aria-hidden="true" />
           <p>Уже более 2500 человек прошли мастер-класс.</p>
         </div>
         <CtaButton />
@@ -178,10 +447,17 @@ export default function Home() {
       <section className="brands bgGrid">
         <h2>Бизнесы и эксперты</h2>
         <p>которые уже заказывают AI-контент</p>
-        <div className="brandGrid">
-          {Array.from({ length: 5 }).map((_, index) => (
-            <div key={index} />
-          ))}
+        <div className="brandMarquee" aria-label="Бизнесы и эксперты">
+          <div className="brandTrack">
+            {Array.from({ length: 10 }).map((_, index) => (
+              <div className="brandSlot" key={`top-${index}`} />
+            ))}
+          </div>
+          <div className="brandTrack brandTrack--reverse">
+            {Array.from({ length: 10 }).map((_, index) => (
+              <div className="brandSlot" key={`bottom-${index}`} />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -207,9 +483,11 @@ export default function Home() {
         <h2><span>Регистрируйся</span> на мастер-класс</h2>
         <p className="limePill">если хочешь:</p>
         <div className="goalGrid">
-          {goals.map((goal) => (
-            <article key={goal}>
-              <i />
+          {goals.map((goal, index) => (
+            <article key={index}>
+              <i>
+                <img src={asset(`figma-assets/goal-${index + 1}.svg`)} alt="" aria-hidden="true" />
+              </i>
               <p>{goal}</p>
             </article>
           ))}
@@ -236,12 +514,12 @@ export default function Home() {
         <h2>Кто проводит</h2>
         <p className="limePill">мастер-класс:</p>
         <div className="hostPhoto">
-          <img src="/figma-assets/gallery-1.png" alt="Юлия Филипенко" />
+          <img src={asset("figma-assets/gallery-1.png")} alt="Юлия Филипенко" />
           <span>Юлия Филипенко</span>
         </div>
         <div className="checkList">
           {hostFacts.map((fact) => (
-            <p key={fact}><i>✓</i>{fact}</p>
+            <p key={fact}><img src={asset("figma-assets/check.svg")} alt="" />{fact}</p>
           ))}
         </div>
         <CtaButton />
@@ -251,11 +529,7 @@ export default function Home() {
         <h2>А также<br />я официальный партнёр</h2>
         <p className="limePill">ведущих нейросетей</p>
         <div className="logoGrid">
-          <article>Higgsfield</article>
-          <article>Midjourney</article>
-          <article>flow.ai</article>
-          <article>KlingAI</article>
-          <article>invideoAI</article>
+          <img src={asset("figma-assets/partner-logos.png")} alt="Higgsfield, Midjourney, flow.ai, KlingAI та invideoAI" />
         </div>
         <p>Higgsfield, Midjourney, Flow, Kling, Invideo</p>
       </section>
@@ -278,8 +552,7 @@ export default function Home() {
       <section className="examples pinkPanel">
         <h2>Примеры AI-контента который</h2>
         <p className="limePill">вы научитесь создавать</p>
-        <div className="videoBox"><span>▶</span></div>
-        <div className="arrows"><button>←</button><button>→</button></div>
+        <ExampleSlider />
         <p>Листайте примеры и посмотрите, какой контент создают AI Smart Creator'ы для брендов, экспертов и бизнеса.</p>
       </section>
 
@@ -287,8 +560,8 @@ export default function Home() {
         <h2>Результаты</h2>
         <p className="limePill">после мастер-класса</p>
         <div className="paper">
-          {resultItems.map(([lead, text]) => (
-            <p key={text}><i>✓</i><span><b>{lead}</b> {text}</span></p>
+          {resultItems.map((item, index) => (
+            <p key={index}><i>✓</i><span>{item}</span></p>
           ))}
         </div>
       </section>
@@ -297,50 +570,49 @@ export default function Home() {
         <h2>Студенты</h2>
         <p className="limePill">те, кто начал свой путь</p>
         <p className="limePill">в AI с нашего мастер-класса</p>
-        <article className="studentCard">
-          <p>Анна специализируется на товарных фотосетах</p>
-          <div className="studentHead">
-            <img src="/figma-assets/gallery-6.png" alt="" />
-            <b>Анна Зотова, предметная съёмка</b>
-          </div>
-          <div className="timeline">
-            <p>Работала онлайн личным ассистентом за копейки</p>
-            <p>Изучила искусственный интеллект у меня на курсе</p>
-            <p>За этот год вышла на 16 тысяч евро, сейчас работают вместе с мужем</p>
-          </div>
-        </article>
+        <StudentSlider />
       </section>
 
       <section className="final bgGrid" id="final">
         <p className="profession">Опануй професію 2026</p>
         <h2>AI Smart Creator</h2>
         <div className="zeroTitle">
-          <span aria-hidden="true">↳</span>
+          <img className="turnArrow" src={asset("figma-assets/arrow-turn.svg")} alt="" aria-hidden="true" />
           <strong>с нуля</strong>
         </div>
         <p className="heroLead">
           <b>Выйди на доход от 500$ до 3000€+,</b> создавая AI-контент для
           бизнесов, экспертов и брендов
         </p>
-        <div className="giftIcon">▣</div>
+        <img className="giftIcon" src={asset("figma-assets/gift-icon.svg")} alt="" aria-hidden="true" />
         <p className="pinkText">Первые 100 зарегистрировавшихся</p>
         <h3>Получат бонус</h3>
         <p className="bonusLead">
           <b>3 бесплатных видео</b> о том, как начать зарабатывать на AI-контенте
         </p>
-        <div className="timer">00:05:50</div>
-        <div className="lessons">
-          <LessonCard label="Урок 1:" title="Хто такі AI-креатори." image={lessonImages[0]} />
-          <LessonCard label="Урок 2:" title="Хто і за що платить AI-креаторам." image={lessonImages[1]} />
-          <LessonCard label="Урок 3:" title="Проекти, які можна виконувати без досвіду." image={lessonImages[2]} />
+        <CountdownTimer />
+        <div className="finalLessons">
+          <div className="lessons">
+            <LessonCard
+              label="Урок 1:"
+              title={<>Хто такі <strong>AI-креатори.</strong></>}
+              image={lessonImages[0]}
+            />
+            <LessonCard
+              label="Урок 2:"
+              title={<>Хто і за що <strong>платить AI-креаторам.</strong></>}
+              image={lessonImages[1]}
+            />
+            <LessonCard
+              label="Урок 3:"
+              title={<>Проекти, які можна <strong>виконувати без досвіду.</strong></>}
+              image={lessonImages[2]}
+              tall
+            />
+          </div>
         </div>
         <div className="people">
-          <div className="faces">
-            {faceImages.map((image, index) => (
-              <img key={`${image}-final-${index}`} src={image} alt="" />
-            ))}
-            <span>+</span>
-          </div>
+          <img className="faces" src={asset("figma-assets/people-group.png")} alt="" aria-hidden="true" />
           <p>Уже более 2500 человек прошли мастер-класс.</p>
         </div>
         <CtaButton />

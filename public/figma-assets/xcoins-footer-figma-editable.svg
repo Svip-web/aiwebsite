@@ -1,0 +1,164 @@
+<svg width="1760" height="900" viewBox="0 0 1760 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="880" y1="0" x2="880" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#050A12"/>
+      <stop offset="0.48" stop-color="#0A121E"/>
+      <stop offset="1" stop-color="#081421"/>
+    </linearGradient>
+    <linearGradient id="cta" x1="46" y1="24" x2="1714" y2="148" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111F31"/>
+      <stop offset="1" stop-color="#0A1422"/>
+    </linearGradient>
+    <radialGradient id="bottomGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(74 836) rotate(-8) scale(392 116)">
+      <stop stop-color="#1B9DFF" stop-opacity="0.78"/>
+      <stop offset="0.32" stop-color="#1B9DFF" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#1B9DFF" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dotGrid" width="18" height="18" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#2D7FBE" opacity="0.35"/>
+    </pattern>
+    <style>
+      .font { font-family: Inter, Arial, sans-serif; }
+      .heading { fill: #F5F8FF; font-size: 18px; font-weight: 800; }
+      .link { fill: #9EADC4; font-size: 18px; font-weight: 500; }
+      .muted { fill: #8998B0; font-size: 15px; font-weight: 500; }
+      .blue { fill: #28A4FF; }
+      .white { fill: #F7FAFF; }
+    </style>
+  </defs>
+
+  <rect width="1760" height="900" fill="url(#bg)"/>
+  <rect y="690" width="1760" height="210" fill="url(#bottomGlow)"/>
+  <path d="M0 836C124 787 213 840 321 811C429 782 489 856 612 828C740 799 829 852 958 824C1086 796 1146 790 1244 764C1342 738 1441 796 1553 750C1665 704 1715 736 1760 693V900H0V836Z" fill="#0D2235" opacity="0.52"/>
+  <path d="M0 812C125 775 213 829 320 801C429 772 489 842 612 815C739 788 829 842 958 811C1085 781 1148 779 1244 752C1342 725 1441 781 1553 739C1665 696 1715 724 1760 682" stroke="#2E9BFF" stroke-opacity="0.45" stroke-width="1.2"/>
+  <path d="M1002 822L1042 818L1080 805L1118 810L1158 781L1194 791L1238 744L1282 767L1322 774L1362 762L1404 783L1446 760L1487 775L1530 736L1572 750L1616 715L1660 724L1718 708L1760 662" stroke="#2D8CDC" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect y="692" width="1760" height="208" fill="url(#dotGrid)" opacity="0.55"/>
+
+  <g id="cta-strip">
+    <rect x="46" y="24" width="1668" height="124" rx="23" fill="url(#cta)" stroke="#1C3147"/>
+    <circle cx="111" cy="86" r="33" fill="#12372F"/>
+    <path d="M116 58L95 88H112L106 115L128 82H111L116 58Z" fill="#35F2A0"/>
+    <text x="175" y="70" class="font blue" font-size="13" font-weight="800" letter-spacing="4">READY TO BUY CRYPTO?</text>
+    <text x="175" y="108" class="font white" font-size="28" font-weight="850">Start with Bitcoin in minutes</text>
+    <text x="1100" y="91" class="font muted" font-size="17">Visa</text>
+    <circle cx="1147" cy="86" r="2" fill="#60728B"/>
+    <text x="1164" y="91" class="font muted" font-size="17">Mastercard</text>
+    <circle cx="1271" cy="86" r="2" fill="#60728B"/>
+    <text x="1288" y="91" class="font muted" font-size="17">Apple Pay</text>
+    <circle cx="1389" cy="86" r="2" fill="#60728B"/>
+    <text x="1406" y="91" class="font muted" font-size="17">Google Pay</text>
+    <path d="M1484 54V116" stroke="#26384D"/>
+    <rect x="1515" y="56" width="161" height="60" rx="13" stroke="#159EFF" stroke-width="1.4"/>
+    <text x="1540" y="92" class="font white" font-size="17" font-weight="800">Buy Bitcoin →</text>
+  </g>
+
+  <g id="footer-columns">
+    <g transform="translate(110 207)">
+      <rect x="0" y="0" width="44" height="44" rx="10" fill="#122033"/>
+      <text x="14" y="29" class="font blue" font-size="22" font-weight="800">₿</text>
+      <text x="60" y="29" class="font heading">Buy Crypto</text>
+      <text x="0" y="89" class="font link">Buy Bitcoin</text>
+      <text x="0" y="125" class="font link">Buy Ethereum</text>
+      <text x="0" y="161" class="font link">Buy XRP</text>
+      <text x="0" y="197" class="font link">Buy Litecoin</text>
+      <text x="0" y="233" class="font link">Buy Solana</text>
+      <text x="0" y="269" class="font link">Buy Dogecoin</text>
+      <text x="0" y="305" class="font link">Buy Bitcoin Cash</text>
+      <text x="0" y="341" class="font link">Buy USD Coin</text>
+      <text x="0" y="382" class="font blue" font-size="18" font-weight="800">All cryptocurrencies →</text>
+    </g>
+
+    <g transform="translate(427 207)">
+      <rect x="0" y="0" width="44" height="44" rx="10" fill="#122033"/>
+      <rect x="13" y="15" width="18" height="14" rx="2" stroke="#28A4FF" stroke-width="2"/>
+      <path d="M13 20H31" stroke="#28A4FF" stroke-width="2"/>
+      <text x="60" y="29" class="font heading">Buy With</text>
+      <text x="0" y="89" class="font link">Buy with Apple Pay</text>
+      <text x="0" y="125" class="font link">Buy with Google Pay</text>
+      <text x="0" y="161" class="font link">Buy with credit card</text>
+      <text x="0" y="197" class="font link">Buy with debit card</text>
+      <text x="0" y="233" class="font link">Buy with PayPal</text>
+      <text x="0" y="269" class="font link">Buy with Trustly</text>
+      <text x="0" y="305" class="font link">Buy with SEPA</text>
+      <text x="0" y="341" class="font link">Buy with Faster Payments</text>
+      <text x="0" y="382" class="font blue" font-size="18" font-weight="800">All payment methods →</text>
+    </g>
+
+    <g transform="translate(756 207)">
+      <rect x="0" y="0" width="44" height="44" rx="10" fill="#122033"/>
+      <path d="M14 16H31M31 16L25 10M31 16L25 22M30 30H13M13 30L19 24M13 30L19 36" stroke="#28A4FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="60" y="29" class="font heading">Sell &amp; Convert</text>
+      <text x="0" y="89" class="font link">Sell Bitcoin</text>
+      <text x="0" y="125" class="font link">Sell Ethereum</text>
+      <text x="0" y="161" class="font link">Sell XRP</text>
+      <text x="0" y="197" class="font link">Convert BTC to USD</text>
+      <text x="0" y="233" class="font link">Convert ETH to USD</text>
+      <text x="0" y="269" class="font link">Convert BTC to ETH</text>
+      <text x="0" y="310" class="font white" font-size="18" font-weight="800">All sell options →</text>
+      <text x="0" y="348" class="font white" font-size="18" font-weight="800">All conversions →</text>
+    </g>
+
+    <g transform="translate(1082 207)">
+      <rect x="0" y="0" width="44" height="44" rx="10" fill="#122033"/>
+      <path d="M13 14C18 12 22 13 26 17C30 13 34 12 39 14V33C34 31 30 32 26 36C22 32 18 31 13 33V14Z" stroke="#28A4FF" stroke-width="2" stroke-linejoin="round"/>
+      <text x="60" y="29" class="font heading">Resources Hub</text>
+      <text x="0" y="89" class="font link">How to buy crypto</text>
+      <text x="0" y="125" class="font link">How to sell crypto</text>
+      <text x="0" y="161" class="font link">How to set up a wallet</text>
+      <text x="0" y="197" class="font link">Bitcoin calculator</text>
+      <text x="0" y="233" class="font link">Ethereum calculator</text>
+      <text x="0" y="269" class="font link">Glossary</text>
+      <text x="0" y="305" class="font link">Blog</text>
+      <text x="0" y="346" class="font white" font-size="18" font-weight="800">All resources →</text>
+    </g>
+
+    <g transform="translate(1410 207)">
+      <rect x="0" y="0" width="44" height="44" rx="10" fill="#122033"/>
+      <path d="M12 34H35M16 18V31M24 18V31M32 18V31M13 18L24 11L35 18H13Z" stroke="#28A4FF" stroke-width="2" stroke-linejoin="round"/>
+      <text x="60" y="29" class="font heading">Company</text>
+      <text x="0" y="89" class="font link">About Xcoins</text>
+      <text x="0" y="125" class="font link">Why Xcoins</text>
+      <text x="0" y="161" class="font link">Fees</text>
+      <text x="0" y="197" class="font link">Security</text>
+      <text x="0" y="233" class="font link">Licenses</text>
+      <text x="0" y="269" class="font link">Press</text>
+      <text x="0" y="305" class="font link">Careers</text>
+      <text x="0" y="341" class="font blue" font-size="18" font-weight="700">Help Center</text>
+      <text x="0" y="377" class="font link">Contact</text>
+    </g>
+  </g>
+
+  <path d="M94 616H1660" stroke="#243245"/>
+  <g id="topic-links" class="font muted">
+    <path d="M111 646H126V661H111V646ZM115 650H122V657H115V650Z" fill="#91A2BA"/>
+    <text x="146" y="660">Buy crypto by payment method</text>
+    <circle cx="383" cy="655" r="2" fill="#28A4FF"/>
+    <text x="412" y="660">Sell crypto</text>
+    <circle cx="516" cy="655" r="2" fill="#28A4FF"/>
+    <text x="545" y="660">Crypto-to-fiat converter</text>
+    <circle cx="733" cy="655" r="2" fill="#28A4FF"/>
+    <text x="762" y="660">Crypto-to-crypto converter</text>
+    <circle cx="963" cy="655" r="2" fill="#28A4FF"/>
+    <text x="992" y="660">Crypto calculators</text>
+    <circle cx="1130" cy="655" r="2" fill="#28A4FF"/>
+    <text x="1159" y="660">Crypto prices</text>
+    <circle cx="1282" cy="655" r="2" fill="#28A4FF"/>
+    <text x="1311" y="660">Crypto glossary</text>
+    <circle cx="1431" cy="655" r="2" fill="#28A4FF"/>
+    <text x="1460" y="660">All cryptocurrencies</text>
+  </g>
+
+  <path d="M94 680H1660" stroke="#243245"/>
+  <g id="legal" class="font muted">
+    <text x="110" y="727">Terms</text>
+    <circle cx="188" cy="721" r="2" fill="#28A4FF"/>
+    <text x="224" y="727">Privacy</text>
+    <circle cx="300" cy="721" r="2" fill="#28A4FF"/>
+    <text x="335" y="727">Cookies</text>
+    <circle cx="430" cy="721" r="2" fill="#28A4FF"/>
+    <text x="465" y="727">AML Policy</text>
+    <circle cx="583" cy="721" r="2" fill="#28A4FF"/>
+    <text x="618" y="727">Risk Disclosure</text>
+    <text x="110" y="762">© Xcoins 2026 · Licensed by the MFSA — VFA Service Provider (VFA/10). Crypto is volatile and you can lose money.</text>
+  </g>
+</svg>

@@ -1,0 +1,74 @@
+<svg width="430" height="118" viewBox="0 0 430 118" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bitcoin live price chart">
+  <defs>
+    <linearGradient id="chartFill" x1="216" y1="14" x2="216" y2="108" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#39D46A" stop-opacity="0.34"/>
+      <stop offset="0.58" stop-color="#39D46A" stop-opacity="0.09"/>
+      <stop offset="1" stop-color="#39D46A" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="greenStroke" x1="35" y1="79" x2="398" y2="16" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#42F274"/>
+      <stop offset="0.58" stop-color="#5AE878"/>
+      <stop offset="1" stop-color="#89F49C"/>
+    </linearGradient>
+
+    <linearGradient id="redStroke" x1="8" y1="75" x2="38" y2="82" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF4C42"/>
+      <stop offset="1" stop-color="#FF6B59"/>
+    </linearGradient>
+
+    <radialGradient id="endDot" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(398 18) rotate(90) scale(7)">
+      <stop stop-color="#B8FFC1"/>
+      <stop offset="0.45" stop-color="#65D977"/>
+      <stop offset="1" stop-color="#244F35"/>
+    </radialGradient>
+
+    <filter id="greenGlow" x="-12" y="-12" width="454" height="142" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2.2" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.164706 0 0 0 0 0.894118 0 0 0 0 0.345098 0 0 0 0.55 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect" result="shape"/>
+    </filter>
+
+    <clipPath id="chartClip">
+      <rect x="0" y="0" width="430" height="118" rx="2"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#chartClip)">
+    <rect width="430" height="118" fill="#071015"/>
+    <rect width="430" height="118" fill="url(#chartFill)" opacity="0.08"/>
+
+    <path d="M0 28.5H430" stroke="#20333C" stroke-width="1" stroke-dasharray="3 5" opacity="0.55"/>
+    <path d="M0 62.5H430" stroke="#20333C" stroke-width="1" stroke-dasharray="3 5" opacity="0.72"/>
+    <path d="M0 96.5H430" stroke="#20333C" stroke-width="1" stroke-dasharray="3 5" opacity="0.45"/>
+
+    <path d="M0 108H430V118H0V108Z" fill="#020608" opacity="0.38"/>
+
+    <path
+      d="M8 72.5L13 73.5L18 72L22 77L27 75.5L31 81.5L36 77.5"
+      stroke="url(#redStroke)"
+      stroke-width="1.8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <path
+      d="M36 77.5L42 72.5L48 71.5L54 68L60 61L66 65.5L72 59.5L78 62L84 58.5L90 55L97 57L103 53.5L109 55L116 49L122 45.5L128 42L134 48.5L140 48L146 52.5L153 43.5L159 40L165 37L171 34L177 37.5L183 33L190 26.5L196 32L202 28.5L208 22L214 25.5L221 24L227 20.5L233 19.5L239 14L245 17.5L252 13L258 13.5L264 10.5L270 13.5L276 8L282 11L289 9L295 15.5L301 16L307 21.5L313 19L319 25L326 24.5L332 21L338 20.5L344 22L350 17.5L356 18.5L363 18L369 15L375 17L381 14.5L387 17.5L393 16.5L398 18"
+      stroke="url(#greenStroke)"
+      stroke-width="1.85"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      filter="url(#greenGlow)"
+    />
+
+    <path
+      d="M36 77.5L42 72.5L48 71.5L54 68L60 61L66 65.5L72 59.5L78 62L84 58.5L90 55L97 57L103 53.5L109 55L116 49L122 45.5L128 42L134 48.5L140 48L146 52.5L153 43.5L159 40L165 37L171 34L177 37.5L183 33L190 26.5L196 32L202 28.5L208 22L214 25.5L221 24L227 20.5L233 19.5L239 14L245 17.5L252 13L258 13.5L264 10.5L270 13.5L276 8L282 11L289 9L295 15.5L301 16L307 21.5L313 19L319 25L326 24.5L332 21L338 20.5L344 22L350 17.5L356 18.5L363 18L369 15L375 17L381 14.5L387 17.5L393 16.5L398 18L398 108L36 108Z"
+      fill="url(#chartFill)"
+    />
+
+    <circle cx="398" cy="18" r="4.4" fill="url(#endDot)" stroke="#86F59A" stroke-width="1.1"/>
+    <circle cx="398" cy="18" r="1.4" fill="#D9FFE0"/>
+  </g>
+</svg>

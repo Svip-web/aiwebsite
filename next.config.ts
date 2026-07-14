@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  /* This file is retained for editor compatibility; the published site uses Vite. */
 };
 
 export default nextConfig;

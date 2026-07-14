@@ -1,0 +1,104 @@
+<svg width="560" height="348" viewBox="0 0 560 348" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MFSA licence certificate card">
+  <defs>
+    <linearGradient id="cardBg" x1="280" y1="24" x2="280" y2="330" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#182233"/>
+      <stop offset="0.54" stop-color="#111A28"/>
+      <stop offset="1" stop-color="#0D1520"/>
+    </linearGradient>
+
+    <linearGradient id="cardStroke" x1="20" y1="24" x2="538" y2="328" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6F7D91"/>
+      <stop offset="0.48" stop-color="#334153"/>
+      <stop offset="1" stop-color="#647287"/>
+    </linearGradient>
+
+    <radialGradient id="softGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(289 171) rotate(90) scale(211 314)">
+      <stop stop-color="#334B68" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#0A111B" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="checkGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(465 263) rotate(90) scale(48)">
+      <stop stop-color="#6BFF7A" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#6BFF7A" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="shadow" x="-8" y="0" width="576" height="360" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#02070D" flood-opacity="0.45"/>
+    </filter>
+
+    <filter id="textGlow" x="220" y="72" width="160" height="54" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="0" stdDeviation="2.4" flood-color="#FFFFFF" flood-opacity="0.22"/>
+    </filter>
+
+    <pattern id="dots" width="14" height="14" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#3C4D62" opacity="0.4"/>
+    </pattern>
+
+    <style>
+      .serif {
+        font-family: Georgia, "Times New Roman", serif;
+      }
+      .sans {
+        font-family: Inter, Arial, sans-serif;
+      }
+    </style>
+  </defs>
+
+  <rect width="560" height="348" fill="#0B121B"/>
+  <rect width="560" height="348" fill="url(#dots)" opacity="0.22"/>
+  <path d="M0 76C76 22 162 31 254 70C343 108 424 91 560 42" stroke="#223246" stroke-width="1" stroke-dasharray="5 6" opacity="0.45"/>
+
+  <g filter="url(#shadow)">
+    <rect x="20.5" y="24.5" width="519" height="305" rx="14.5" fill="url(#cardBg)" stroke="url(#cardStroke)"/>
+    <rect x="20.5" y="24.5" width="519" height="305" rx="14.5" fill="url(#softGlow)"/>
+  </g>
+
+  <path d="M36 40H75C75 47.5 68.5 54 61 54H50C50 61.5 43.5 68 36 68V40Z" stroke="#516174" stroke-width="1.2" opacity="0.65"/>
+  <path d="M524 40H485C485 47.5 491.5 54 499 54H510C510 61.5 516.5 68 524 68V40Z" stroke="#516174" stroke-width="1.2" opacity="0.65"/>
+  <path d="M36 314H75C75 306.5 68.5 300 61 300H50C50 292.5 43.5 286 36 286V314Z" stroke="#516174" stroke-width="1.2" opacity="0.65"/>
+  <path d="M524 314H485C485 306.5 491.5 300 499 300H510C510 292.5 516.5 286 524 286V314Z" stroke="#516174" stroke-width="1.2" opacity="0.65"/>
+
+  <path d="M52 314H508" stroke="#2A3748" stroke-width="1"/>
+  <path d="M52 40H508" stroke="#2A3748" stroke-width="1"/>
+  <path d="M36 68V286" stroke="#273445" stroke-width="1"/>
+  <path d="M524 68V286" stroke="#273445" stroke-width="1"/>
+
+  <g id="crest" opacity="0.72" stroke="#7E8A9C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M129 106C111 106 95 101 78 94V151C78 181 100 205 129 217C158 205 180 181 180 151V94C163 101 147 106 129 106Z"/>
+    <path d="M129 116V204"/>
+    <path d="M89 112V151C89 173 105 192 129 203"/>
+    <path d="M169 112V151C169 173 153 192 129 203"/>
+    <path d="M89 112C102 117 115 120 129 120C143 120 156 117 169 112"/>
+
+    <path d="M94 133H113V144H124V163H113V174H94V163H83V144H94V133Z"/>
+    <path d="M139 132C146 128 154 128 162 132V170C154 166 146 166 139 170V132Z"/>
+    <path d="M139 132C132 128 124 128 116 132V170C124 166 132 166 139 170V132Z"/>
+    <path d="M122 138H134"/>
+    <path d="M122 147H134"/>
+    <path d="M144 138H156"/>
+    <path d="M144 147H156"/>
+
+    <path d="M90 92L86 75L98 83L103 70L112 84L121 67L129 85L137 67L146 84L155 70L160 83L172 75L168 92"/>
+    <path d="M87 93H171"/>
+    <path d="M93 82L101 92"/>
+    <path d="M114 82L118 92"/>
+    <path d="M129 84V92"/>
+    <path d="M144 82L140 92"/>
+    <path d="M165 82L157 92"/>
+  </g>
+
+  <text x="232" y="118" class="serif" fill="#F6F8FB" font-size="48" font-weight="700" letter-spacing="1" filter="url(#textGlow)">MFSA</text>
+
+  <text x="232" y="154" class="sans" fill="#AAB4C4" font-size="17" font-weight="600" letter-spacing="4">MALTA FINANCIAL</text>
+  <text x="232" y="179" class="sans" fill="#AAB4C4" font-size="17" font-weight="600" letter-spacing="4">SERVICES AUTHORITY</text>
+
+  <path d="M232 202H472" stroke="#3E4B5B" stroke-width="1"/>
+
+  <text x="232" y="235" class="sans" fill="#97A2B4" font-size="15" font-weight="600" letter-spacing="4">LICENCE NO.</text>
+  <text x="232" y="276" class="sans" fill="#2FA4FF" font-size="25" font-weight="700" letter-spacing="2">VFA/10</text>
+
+  <circle cx="465" cy="263" r="43" fill="url(#checkGlow)"/>
+  <circle cx="465" cy="263" r="36" fill="#12361F" fill-opacity="0.18" stroke="#4DD965" stroke-width="2"/>
+  <circle cx="465" cy="263" r="29" stroke="#4DD965" stroke-width="1.2" opacity="0.72"/>
+  <path d="M453 262L462 271L480 251" stroke="#63F276" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
