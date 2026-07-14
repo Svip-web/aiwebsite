@@ -239,6 +239,7 @@ h3 {
 }
 
 .heroPhoto {
+  aspect-ratio: 382 / 536;
   min-height: 0;
   padding: 0;
   border: 0;
@@ -249,7 +250,7 @@ h3 {
 
 .heroPhoto img {
   width: 100%;
-  height: auto;
+  height: 100%;
   min-height: 0;
   object-fit: contain;
 }

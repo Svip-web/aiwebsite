@@ -358,7 +358,7 @@ function CountdownTimer() {
 
 export default function Home() {
   useEffect(() => {
-    const sections = Array.from(document.querySelectorAll<HTMLElement>(".page > section"));
+    const sections = Array.from(document.querySelectorAll<HTMLElement>(".page > section:not(.hero)"));
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -406,7 +406,15 @@ export default function Home() {
             ))}
           </div>
           <div className="heroPhoto">
-            <img src={heroImage} alt="AI Smart Creator" />
+            <img
+              src={heroImage}
+              alt="AI Smart Creator"
+              width={382}
+              height={536}
+              loading="eager"
+              decoding="sync"
+              fetchPriority="high"
+            />
           </div>
         </div>
         <CtaButton />
