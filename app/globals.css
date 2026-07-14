@@ -95,6 +95,14 @@ img {
   text-align: center;
 }
 
+/* Keep the designed 360px hero composition intact on narrow phones. */
+@media (max-width: 359px) {
+  .hero {
+    width: 360px;
+    min-width: 360px;
+  }
+}
+
 .topPill {
   display: inline-flex;
   align-items: center;
