@@ -51,9 +51,9 @@ img {
 }
 
 .page {
-  width: 360px;
-  min-width: 360px;
-  max-width: 360px;
+  width: 375px;
+  min-width: 375px;
+  max-width: 375px;
   margin: 0 auto;
   overflow-x: clip;
   overflow-y: visible;
