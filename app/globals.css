@@ -52,10 +52,11 @@ img {
 }
 
 .page {
-  width: 375px;
-  min-width: 375px;
-  max-width: 375px;
-  margin: 0 auto;
+  --content-gutter: max(0px, calc((100% - 360px) / 2));
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  margin: 0;
   overflow-x: clip;
   overflow-y: visible;
   background: #ffffff;
@@ -94,15 +95,15 @@ img {
 .practice,
 .results,
 .final {
-  padding: 20px 17px 60px;
+  padding: 20px var(--content-gutter) 60px;
 }
 
 .hero {
   position: relative;
-  left: 50%;
-  width: 393px;
-  min-width: 393px;
-  transform: translateX(-50%);
+  left: auto;
+  width: 100%;
+  min-width: 0;
+  transform: none;
   text-align: center;
 }
 
@@ -330,7 +331,7 @@ h3 {
 
 .pinkPanel {
   margin: 16px 0 0;
-  padding: 54px 17px 60px;
+  padding: 54px var(--content-gutter) 60px;
   border-radius: 38px;
   background: var(--soft-pink);
 }
@@ -1202,8 +1203,8 @@ h3 {
 }
 
 .finalLessons {
-  margin: 0 -17px;
-  padding: 22px 17px 8px;
+  margin: 0;
+  padding: 22px 0 8px;
   background: transparent;
   text-align: left;
 }
