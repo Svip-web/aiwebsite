@@ -55,7 +55,8 @@ img {
   min-width: 360px;
   max-width: 360px;
   margin: 0 auto;
-  overflow-x: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
   background: #ffffff;
 }
 
