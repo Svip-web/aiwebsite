@@ -22,16 +22,15 @@
 
 html {
   max-width: 100%;
-  overflow-x: clip;
-  overflow-y: visible;
+  overflow-x: hidden;
+  overflow-y: auto;
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   max-width: 100%;
-  overflow-x: clip;
-  overflow-y: visible;
+  overflow: visible;
   background: #eef1f5;
   color: var(--ink);
   font-family: "Geologica", Arial, Helvetica, sans-serif;
