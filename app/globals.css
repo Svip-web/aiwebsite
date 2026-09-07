@@ -175,6 +175,17 @@ h3 {
   white-space: nowrap;
 }
 
+.hero h1 {
+  font-size: 22px;
+  line-height: 1.12;
+  white-space: normal;
+}
+
+.hero .zeroTitle strong,
+.final .zeroTitle strong {
+  font-size: 30px;
+}
+
 .zeroTitle {
   display: flex;
   align-items: center;
@@ -283,12 +294,18 @@ h3 {
   box-shadow: 0 6px 0 #cef41d, 0 24px 42px rgba(220, 255, 54, 0.38);
   color: #000000;
   font-family: "Unbounded", Arial, Helvetica, sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 800;
   text-transform: uppercase;
   transform: translateZ(0);
   transition: transform 180ms ease, box-shadow 180ms ease;
   animation: ctaGradientFlow 3.2s ease-in-out infinite;
+}
+
+.cta > span:first-child {
+  max-width: 260px;
+  line-height: 1.15;
+  text-align: center;
 }
 
 .cta:hover,
@@ -466,6 +483,13 @@ h3 {
   margin: 20px 0 36px;
   color: var(--muted);
   font-size: 15px;
+}
+
+.etsyProducts {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 8px;
 }
 
 .brandMarquee {
@@ -1019,7 +1043,7 @@ h3 {
   width: 520px;
   height: 678px;
   transform: translateX(-50%);
-  background: url("/aiwebsite/figma-assets/results-typewriter.png") center top / 520px auto no-repeat;
+  background: var(--typewriter-image) center top / 520px auto no-repeat;
   pointer-events: none;
 }
 
@@ -1075,6 +1099,73 @@ h3 {
   height: auto;
   border-radius: 16px;
   will-change: opacity, transform;
+}
+
+.studentCaseSlide {
+  min-height: 520px;
+  padding: 18px;
+  border-radius: 16px;
+  background: #ffffff;
+  color: var(--ink);
+  text-align: left;
+  will-change: opacity, transform;
+}
+
+.studentCaseSlide header {
+  display: grid;
+  gap: 4px;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--lime);
+}
+
+.studentCaseSlide header strong {
+  font-family: "Unbounded", Arial, Helvetica, sans-serif;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+.studentCaseSlide header span {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.studentTimeline {
+  display: grid;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.studentTimeline article {
+  position: relative;
+  padding: 22px 16px 16px;
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
+}
+
+.studentTimeline article > b {
+  position: absolute;
+  top: -11px;
+  left: 14px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: #000000;
+  color: #ffffff;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.studentTimeline article:last-child {
+  border-color: var(--pink);
+  background: var(--pink);
+  color: #ffffff;
+}
+
+.studentTimeline p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.3;
 }
 
 .studentSlide--next {
