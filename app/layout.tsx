@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Smart Creator с нуля",
+  title: "Бесплатный мастер-класс по Etsy и AI",
   description:
-    "Бесплатный онлайн мастер-класс о создании AI-контента для бизнесов, экспертов и брендов.",
+    "Как создавать принты и цифровые товары с помощью искусственного интеллекта и выйти на доход от 3000€ в месяц.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",

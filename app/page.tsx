@@ -57,9 +57,9 @@ const heroBenefits = [
 const audienceCards = [
   {
     image: asset("figma-assets/audience-1.png"),
-    title: "Для тех, кто хочет независимый доход",
+    title: "Если вы хотите свой независимый доход",
     text: (
-      <>Если вы хотите свой независимый доход и не хотите зависеть только от зарплаты мужа, начальника или одного источника дохода.</>
+      <>И не хотите зависеть только от зарплаты мужа, начальника или одного источника дохода.</>
     ),
   },
   {
@@ -96,12 +96,12 @@ const audienceCards = [
 ];
 
 const goals = [
-  <><strong>Создать свой магазин на Etsy</strong> и начать продавать товары онлайн без собственного производства и склада</>,
-  <><strong>Выйти на доход от 3000€+</strong>, продавая Print on Demand, цифровые товары, товары по дропшиппингу или развивая свой бренд на Etsy</>,
-  <><strong>Начать зарабатывать без опыта</strong> и пошагово разобраться с Etsy, даже если ты никогда раньше не продавала онлайн</>,
-  <><strong>Работать из любой точки мира</strong>, создавать и развивать свой магазин там, где тебе удобно — нужен только интернет</>,
-  <><strong>Создавать товары с помощью AI</strong>, находить прибыльные идеи, создавать дизайны, фотографии и цифровые продукты намного быстрее</>,
-  <><strong>Получить первые продажи уже во время обучения</strong> и понять, как превратить Etsy-магазин в стабильный источник дохода</>,
+  <><strong>Создать свой магазин на Etsy</strong><br />И начать продавать товары онлайн без собственного производства и склада</>,
+  <><strong>Выйти на доход от 3000€+</strong><br />Продавая Print on Demand, цифровые товары, товары по дропшиппингу или развивая свой бренд на Etsy</>,
+  <><strong>Начать зарабатывать без опыта</strong><br />Пошагово разобраться с Etsy, даже если ты никогда раньше не продавала онлайн</>,
+  <><strong>Работать из любой точки мира</strong><br />Создавать и развивать свой магазин там, где тебе удобно — нужен только интернет</>,
+  <><strong>Создавать товары с помощью AI</strong><br />Находить прибыльные идеи, создавать дизайны, фотографии и цифровые продукты намного быстрее</>,
+  <><strong>Получить первые продажи уже во время обучения</strong><br />И понять, как превратить Etsy-магазин в стабильный источник дохода</>,
 ];
 
 const hostFacts = [
@@ -132,7 +132,7 @@ const practiceCards = [
   {
     image: asset("figma-assets/practice-invitation.png"),
     title: "04. Искусственный интеллект для Etsy",
-    text: <>Покажем, как с помощью AI <strong>находить прибыльные ниши и идеи, создавать товары, карточки, фотографии и продающие описания</strong>, а также ускорять работу с магазином.</>,
+    text: <>Покажем, как с помощью AI <strong>находить прибыльные ниши и идеи, создавать товары, карточки, фотографии и продающие описания</strong>, а также значительно ускорять работу с магазином.</>,
   },
   {
     image: asset("figma-assets/gallery-5.png"),
@@ -165,7 +165,7 @@ const studentCases = [
   {
     name: "Катерина",
     meta: "Берлин · Дропшиппинг + Digital",
-    start: "Делала маникюр на дому. Очень уставала, и практически не оставалось времени на семью.",
+    start: "Делала маникюр на дому. Очень уставала и практически не оставалось времени на семью.",
     middle: "За второй месяц обучения заработала 2 000€ и освоила несколько моделей: начала с дропшиппинга, а затем добавила цифровые товары.",
     result: "Доход на 3-й месяц обучения — 5200€.",
   },
@@ -174,11 +174,11 @@ const studentCases = [
     meta: "Варшава · Print on Demand",
     start: "Переехала в Варшаву с дочкой в 2022 году. Не имела своего дохода, зависела от мужа.",
     middle: "По несколько часов занималась Etsy. Запустила магазин по модели Print on Demand и получила первые продажи уже в первый месяц.",
-    result: "На 3-й месяц вышла на 3 000€ в месяц и полностью сосредоточилась на Etsy.",
+    result: "На 3-й месяц вышла на 3 000€ в месяц, полностью сосредоточилась на Etsy, увидев потенциал этой модели.",
   },
 ];
 
-function CtaButton({ label = "Зарегистрироваться на мастер-класс" }: { label?: string }) {
+function CtaButton({ label = "Зарегистрироваться на бесплатный мастер-класс" }: { label?: string }) {
   return (
     <a className="cta" href="#final">
       <span>{label}</span>
@@ -277,7 +277,7 @@ function ExampleSlider() {
           key={`${activeSlide}-${slideDirection}`}
           className={`exampleSlide exampleSlide--${slideDirection}`}
           src={exampleSlides[activeSlide]}
-          alt={`Приклад AI-контенту ${activeSlide + 1}`}
+          alt={`Пример товара для Etsy ${activeSlide + 1}`}
           draggable={false}
         />
         <button className="playButton" type="button" aria-label="Відтворити приклад">
@@ -432,13 +432,13 @@ export default function Home() {
         </div>
         <p className="profession">Как создавать принты и цифровые товары</p>
         <h1>с помощью искусственного интеллекта</h1>
+        <p className="heroLead">
+          <b>и выйти на доход</b>
+        </p>
         <div className="zeroTitle">
           <img className="turnArrow" src={asset("figma-assets/arrow-turn.svg")} alt="" aria-hidden="true" />
-          <strong>от 3000€</strong>
+          <strong>от 3000€ в месяц</strong>
         </div>
-        <p className="heroLead">
-          <b>и выйти на доход от 3000€ в месяц</b>
-        </p>
 
         <div className="heroContent">
           <div className="heroBenefits">
@@ -452,7 +452,7 @@ export default function Home() {
           <div className="heroPhoto">
             <img
               src={heroImage}
-              alt="AI Smart Creator"
+              alt="Принты и цифровые товары с помощью искусственного интеллекта"
               width={382}
               height={536}
               loading="eager"
@@ -474,17 +474,17 @@ export default function Home() {
         <div className="lessons">
           <LessonCard
             label="Видео-бонус №1"
-            title={<>Пошаговая стратегия, как я заработала <strong>100 000€ всего за 60 дней</strong> на сезонном товаре с помощью ИИ</>}
+            title={<>Пошаговая стратегия как я заработала <strong>100.000€ всего за 60 дней</strong> на сезонном товаре с помощью ИИ</>}
             image={lessonImages[0]}
           />
           <LessonCard
             label="Бонус №2"
-            title={<>Список товаров, которые можно запустить прямо сейчас и получить <strong>первые заказы уже через 14 дней</strong> — идеально перед 4 кварталом</>}
+            title={<>Список товаров, которые можно запустить прямо сейчас и получить <strong>первые заказы уже через 14 дней</strong> (идеально перед 4 кварталом)</>}
             image={lessonImages[1]}
           />
           <LessonCard
             label="Бонус №3"
-            title={<>Шпаргалка по искусственному интеллекту. <strong>Все мои ТОП-наработки в одном PDF</strong></>}
+            title={<>Шпаргалка по искусственному интеллекту. <strong>Все мои ТОП наработки в одном PDF</strong></>}
             image={lessonImages[2]}
             tall
           />
@@ -586,21 +586,19 @@ export default function Home() {
 
       <section className="students pinkPanel">
         <h2>Студенты</h2>
-        <p className="limePill">те, кто начал свой путь в Etsy</p>
-        <p className="limePill">с нашего мастер-класса</p>
+        <p className="limePill">те, кто начал свой путь в Etsy,</p>
+        <p className="limePill">придя на наш мастер-класс</p>
         <StudentSlider />
       </section>
 
       <section className="final bgGrid" id="final">
         <p className="profession">Бесплатный онлайн мастер-класс</p>
-        <h2>Создавай товары с помощью AI</h2>
+        <h2>Как создавать принты и цифровые товары</h2>
+        <p className="heroLead"><b>с помощью искусственного интеллекта и выйти на доход</b></p>
         <div className="zeroTitle">
           <img className="turnArrow" src={asset("figma-assets/arrow-turn.svg")} alt="" aria-hidden="true" />
-          <strong>от 3000€</strong>
+          <strong>от 3000€ в месяц</strong>
         </div>
-        <p className="heroLead">
-          <b>Выйди на доход от 3000€ в месяц</b> без склада, закупок товаров и сложного дизайна
-        </p>
         <img className="giftIcon" src={asset("figma-assets/gift-icon.svg")} alt="" aria-hidden="true" />
         <p className="pinkText">Первые 100 участников</p>
         <h3>Получат 3 бонуса</h3>
