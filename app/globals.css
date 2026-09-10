@@ -520,11 +520,75 @@ h3 {
   font-weight: 800;
 }
 
-.etsyProducts {
+.etsyProductsSlider {
   width: 100%;
-  height: auto;
-  margin: 0 auto;
+}
+
+.etsyProductsViewport {
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  touch-action: pan-x pan-y;
+}
+
+.etsyProductsViewport::-webkit-scrollbar {
+  display: none;
+}
+
+.etsyProductsSlide {
+  position: relative;
+  flex: 0 0 100%;
+  aspect-ratio: 508 / 629;
+  overflow: hidden;
   border-radius: 8px;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.etsyProducts {
+  position: absolute;
+  top: 0;
+  width: 200%;
+  max-width: none;
+  height: 100%;
+  user-select: none;
+}
+
+.etsyProducts--left {
+  left: 0;
+}
+
+.etsyProducts--right {
+  right: 0;
+}
+
+.etsyProductsDots {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 14px;
+}
+
+.etsyProductsDots i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #d5d5d5;
+  transition: width 180ms ease, border-radius 180ms ease, background 180ms ease;
+}
+
+.etsyProductsDots i.isActive {
+  width: 22px;
+  border-radius: 999px;
+  background: var(--pink);
+}
+
+.etsyProductsSlider .arrows {
+  margin-top: 14px;
 }
 
 .brandMarquee {

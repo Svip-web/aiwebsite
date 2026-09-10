@@ -292,6 +292,52 @@ function ExampleSlider() {
   );
 }
 
+function EtsyProductsSlider() {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const viewport = useRef<HTMLDivElement | null>(null);
+  const slideCount = 2;
+
+  const goToSlide = (index: number) => {
+    const nextIndex = (index + slideCount) % slideCount;
+    setActiveSlide(nextIndex);
+    viewport.current?.scrollTo({
+      left: nextIndex * viewport.current.clientWidth,
+      behavior: "smooth",
+    });
+  };
+
+  return (
+    <div className="etsyProductsSlider">
+      <div
+        ref={viewport}
+        className="etsyProductsViewport"
+        onScroll={(event) => {
+          const width = event.currentTarget.clientWidth;
+          if (width > 0) setActiveSlide(Math.round(event.currentTarget.scrollLeft / width));
+        }}
+      >
+        {[0, 1].map((index) => (
+          <div className="etsyProductsSlide" key={index}>
+            <img
+              className={`etsyProducts etsyProducts--${index === 0 ? "left" : "right"}`}
+              src={asset("figma-assets/etsy-products.png")}
+              alt={`Примеры товаров учеников на Etsy, часть ${index + 1}`}
+              draggable={false}
+            />
+          </div>
+        ))}
+      </div>
+      <div className="etsyProductsDots" aria-hidden="true">
+        {[0, 1].map((index) => <i className={activeSlide === index ? "isActive" : ""} key={index} />)}
+      </div>
+      <div className="arrows">
+        <button type="button" aria-label="Предыдущие товары" onClick={() => goToSlide(activeSlide - 1)}><img src={asset("figma-assets/arrow-left.svg")} alt="" /></button>
+        <button type="button" aria-label="Следующие товары" onClick={() => goToSlide(activeSlide + 1)}><img src={asset("figma-assets/arrow-right.svg")} alt="" /></button>
+      </div>
+    </div>
+  );
+}
+
 function StudentSlider() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [slideDirection, setSlideDirection] = useState<"next" | "previous">("next");
@@ -502,7 +548,7 @@ export default function Home() {
       <section className="brands bgGrid">
         <h2>На каких товарах уже <span>зарабатывают</span> наши ученики?</h2>
         <p>Реальные товары и ниши, которые наши ученики <strong>уже продают на Etsy прямо сейчас</strong></p>
-        <img className="etsyProducts" src={asset("figma-assets/etsy-products.png")} alt="Примеры товаров учеников на Etsy" />
+        <EtsyProductsSlider />
       </section>
 
       <section className="goals bgGrid">
