@@ -509,6 +509,17 @@ h3 {
   font-size: 15px;
 }
 
+.brands h2 {
+  font-size: 29px;
+  line-height: 1.08;
+}
+
+.brands h2 span,
+.brands p strong {
+  color: var(--pink);
+  font-weight: 800;
+}
+
 .etsyProducts {
   width: 100%;
   height: auto;

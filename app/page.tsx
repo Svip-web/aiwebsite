@@ -500,8 +500,8 @@ export default function Home() {
       </section>
 
       <section className="brands bgGrid">
-        <h2>На каких товарах уже зарабатывают наши ученики?</h2>
-        <p>Реальные товары и ниши, которые наши ученики уже продают на Etsy прямо сейчас</p>
+        <h2>На каких товарах уже <span>зарабатывают</span> наши ученики?</h2>
+        <p>Реальные товары и ниши, которые наши ученики <strong>уже продают на Etsy прямо сейчас</strong></p>
         <img className="etsyProducts" src={asset("figma-assets/etsy-products.png")} alt="Примеры товаров учеников на Etsy" />
       </section>
 
