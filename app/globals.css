@@ -378,6 +378,27 @@ h3 {
   text-align: center;
 }
 
+.bonusTitleLine {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 4px;
+}
+
+.bonusTitleLine b {
+  display: inline-grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--lime);
+  color: #000000;
+  font-family: "Geologica", Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  line-height: 1;
+}
+
 .bonusLead {
   margin: 12px auto 28px;
   max-width: 320px;

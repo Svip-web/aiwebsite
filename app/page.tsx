@@ -467,7 +467,10 @@ export default function Home() {
       <section className="bonus pinkPanel">
         <img className="giftIcon" src={asset("figma-assets/gift-icon.svg")} alt="" aria-hidden="true" />
         <p className="pinkText">Первые 100 участников мастер-класса</p>
-        <h2>Получат 3 бонуса</h2>
+        <h2>
+          Получат
+          <span className="bonusTitleLine"><b>3</b> бонуса</span>
+        </h2>
         <p className="bonusLead">
           Заберите материалы, которые помогут быстрее запустить первые товары
         </p>
