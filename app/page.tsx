@@ -9,8 +9,8 @@ const heroImage = asset("figma-assets/hero-main.png");
 
 const lessonImages = [
   asset("figma-assets/lesson-1.png"),
-  asset("figma-assets/lesson-2.png"),
-  asset("figma-assets/lesson-3.png"),
+  asset("figma-assets/bonus-products-mockup.png"),
+  asset("figma-assets/bonus-ai-cheatsheet-mockup.png"),
 ];
 
 const exampleSlides = [
