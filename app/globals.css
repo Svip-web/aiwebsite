@@ -200,6 +200,7 @@ h3 {
   height: 38px;
   flex: 0 0 auto;
   object-fit: contain;
+  transform: translateY(-7px);
 }
 
 .zeroTitle strong {
