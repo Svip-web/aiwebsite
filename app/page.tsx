@@ -29,7 +29,7 @@ const heroBenefits = [
     ),
   },
   {
-    icon: asset("figma-assets/benefit-laptop.svg"),
+    icon: asset("figma-assets/benefit-wallet.svg"),
     text: (
       <>
         <b>Без закупки товаров.</b>
@@ -45,7 +45,7 @@ const heroBenefits = [
     ),
   },
   {
-    icon: asset("figma-assets/benefit-wallet.svg"),
+    icon: asset("figma-assets/benefit-laptop.svg"),
     text: (
       <>
         С возможностью работать из <b>любой точки мира.</b>
