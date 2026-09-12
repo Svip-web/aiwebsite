@@ -156,6 +156,17 @@ img {
   text-transform: uppercase;
 }
 
+.hero .profession {
+  font-size: 15px;
+  letter-spacing: 1.5px;
+}
+
+.final .profession {
+  margin-bottom: 10px;
+  font-size: 14px;
+  letter-spacing: 1.2px;
+}
+
 h1,
 h2,
 h3 {
@@ -172,13 +183,27 @@ h3 {
   color: var(--pink);
   font-size: 26px;
   line-height: 1.05;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .hero h1 {
-  font-size: 22px;
-  line-height: 1.12;
-  white-space: normal;
+  font-size: 26px;
+  line-height: 1.08;
+}
+
+.final h2 {
+  width: min(430px, calc(100vw - 32px));
+  max-width: none;
+  margin: 18px 0 0 50%;
+  font-size: 30px;
+  line-height: 1.08;
+  overflow-wrap: break-word;
+  transform: translateX(-50%);
+}
+
+.final h2 span {
+  display: block;
+  white-space: nowrap;
 }
 
 .hero .zeroTitle strong,
@@ -192,7 +217,7 @@ h3 {
   align-items: center;
   justify-content: center;
   gap: 12px;
-  margin: 8px 0 22px;
+  margin: 0 0 22px;
 }
 
 .turnArrow {
@@ -204,20 +229,23 @@ h3 {
 }
 
 .zeroTitle strong {
-  display: inline-block;
+  display: inline-grid;
+  place-items: center;
   min-width: 232px;
-  padding: 6px 20px 10px;
+  min-height: 38px;
+  padding: 6px 20px;
   border-radius: 999px;
   background: var(--lime);
   color: #000000;
   font-family: "Unbounded", Arial, Helvetica, sans-serif;
   font-size: 42px;
   line-height: 1;
+  text-align: center;
   text-transform: uppercase;
 }
 
 .heroLead {
-  margin: 0 auto 20px;
+  margin: 0 auto 8px;
   max-width: 360px;
   color: #000000;
   font-size: 14px;
@@ -290,6 +318,8 @@ h3 {
   max-width: 100%;
   min-height: 83px;
   margin: 0 auto;
+  padding: 0 18px;
+  border: 0;
   border-radius: 23px;
   background: linear-gradient(110deg, #e1ff51 0%, #daff27 28%, #f1ff8a 48%, #daff27 68%, #e1ff51 100%);
   background-size: 220% 100%;
@@ -299,6 +329,7 @@ h3 {
   font-size: 14px;
   font-weight: 800;
   text-transform: uppercase;
+  cursor: pointer;
   transform: translateZ(0);
   transition: transform 180ms ease, box-shadow 180ms ease;
   animation: ctaGradientFlow 3.2s ease-in-out infinite;
@@ -308,6 +339,11 @@ h3 {
   max-width: 260px;
   line-height: 1.15;
   text-align: left;
+}
+
+.hero .cta,
+.final .cta {
+  font-size: 12px;
 }
 
 .cta:hover,
@@ -348,6 +384,205 @@ h3 {
   transform: rotate(-8deg);
 }
 
+.floatingCta {
+  position: fixed;
+  left: 50%;
+  bottom: calc(14px + env(safe-area-inset-bottom));
+  z-index: 50;
+  width: min(359px, calc(100vw - 24px));
+  min-height: 68px;
+  margin: 0;
+  padding: 10px 16px;
+  font-size: 14px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, calc(100% + 32px));
+  transition: opacity 180ms ease, transform 220ms ease, visibility 180ms ease, box-shadow 180ms ease;
+}
+
+.floatingCta--visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+
+.floatingCta:hover,
+.floatingCta:focus-visible {
+  transform: translate(-50%, -2px) scale(1.02);
+}
+
+.floatingCta:active {
+  transform: translate(-50%, 2px) scale(0.99);
+}
+
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(20, 18, 20, 0.58);
+  backdrop-filter: blur(5px);
+}
+
+.registrationModal {
+  position: relative;
+  width: min(430px, 100%);
+  max-height: calc(100vh - 32px);
+  padding: 30px 24px 24px;
+  border-radius: 20px;
+  background: #fff5fa;
+  box-shadow: 0 24px 70px rgba(23, 20, 22, 0.28);
+  overflow-y: auto;
+  text-align: left;
+}
+
+.modalClose {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--ink);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modalClose:hover,
+.modalClose:focus-visible {
+  background: var(--lime);
+}
+
+.modalEyebrow {
+  max-width: calc(100% - 44px);
+  margin: 0 0 10px;
+  color: var(--pink);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.registrationModal h2 {
+  max-width: 350px;
+  color: var(--ink);
+  font-size: 25px;
+  line-height: 1.08;
+  text-align: left;
+}
+
+.modalIntro {
+  margin: 14px 0 20px;
+  color: #575157;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.registrationModal form {
+  display: grid;
+  gap: 14px;
+}
+
+.registrationModal form > label:not(.modalConsent) {
+  display: grid;
+  gap: 6px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.registrationModal input[type="text"],
+.registrationModal input[type="email"],
+.registrationModal input[type="tel"] {
+  width: 100%;
+  height: 50px;
+  padding: 0 14px;
+  border: 1px solid #dfd3d9;
+  border-radius: 8px;
+  outline: 0;
+  background: #ffffff;
+  color: var(--ink);
+  font: 400 16px/1.2 "Geologica", Arial, Helvetica, sans-serif;
+}
+
+.registrationModal input[type="text"]:focus,
+.registrationModal input[type="email"]:focus,
+.registrationModal input[type="tel"]:focus {
+  border-color: var(--pink);
+  box-shadow: 0 0 0 3px rgba(255, 73, 153, 0.14);
+}
+
+.modalSubmit,
+.modalSuccess button {
+  width: 100%;
+  min-height: 60px;
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--lime);
+  color: #000000;
+  font-family: "Unbounded", Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.modalSubmit {
+  min-height: 72px;
+  padding-block: 16px;
+  font-size: 16px;
+}
+
+.modalSubmit:hover,
+.modalSubmit:focus-visible,
+.modalSuccess button:hover,
+.modalSuccess button:focus-visible {
+  box-shadow: 0 5px 0 #cef41d;
+  transform: translateY(-2px);
+}
+
+.modalSuccess {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  padding: 20px 0 4px;
+  text-align: center;
+}
+
+.modalSuccess > span {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--lime);
+  color: #000000;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.modalSuccess h2 {
+  text-align: center;
+}
+
+.modalSuccess p {
+  margin: 0 0 8px;
+  color: #575157;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
 .pinkPanel {
   margin: 16px 0 0;
   padding: 54px var(--content-gutter) 60px;
@@ -364,7 +599,7 @@ h3 {
 
 .pinkText {
   margin: 0 0 8px;
-  color: var(--pink);
+  color: #000000;
   font-size: 15px;
   line-height: 1.2;
   text-align: center;
@@ -388,14 +623,15 @@ h3 {
 
 .bonusTitleLine b {
   display: inline-grid;
-  width: 42px;
-  height: 42px;
+  width: 52px;
+  height: 52px;
   place-items: center;
   border-radius: 50%;
   background: var(--lime);
   color: #000000;
-  font-family: "Geologica", Arial, Helvetica, sans-serif;
-  font-size: 30px;
+  font-family: "Unbounded", Arial, Helvetica, sans-serif;
+  font-size: 40px;
+  font-weight: 800;
   line-height: 1;
 }
 
@@ -413,18 +649,25 @@ h3 {
   gap: 12px;
 }
 
+.bonus > .lessons {
+  margin-top: 24px;
+}
+
+.bonus > .cta {
+  margin-top: 24px;
+}
+
 .lessonCard {
   display: grid;
-  grid-template-columns: 1fr 141px;
-  gap: 12px;
-  min-height: 132px;
+  grid-template-columns: 1fr;
+  gap: 14px;
   padding: 16px;
   border-radius: 20px;
   background: #f9f9f9;
   box-shadow: 0 6px 0 var(--lime);
 }
 
-.lessonCard span {
+.lessonCard .lessonBadge {
   display: inline-flex;
   align-items: center;
   height: 29px;
@@ -439,26 +682,43 @@ h3 {
 
 .lessonCard h3 {
   font-family: "Geologica", Arial, Helvetica, sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.22;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.15;
   text-transform: none;
+}
+
+.lessonCopy {
+  text-align: left;
 }
 
 .lessonCard h3 strong {
   font-weight: 800;
 }
 
+.lessonCard .lessonSubtitle {
+  margin: 6px 0 0;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.18;
+}
+
+.lessonCard .lessonSubtitle strong {
+  font-weight: 800;
+}
+
 .lockedPreview {
   position: relative;
-  width: 141px;
-  height: 100px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
-  border-radius: 18px;
+  border-radius: 14px;
+  background: #ffffff;
 }
 
 .lockedPreview--tall {
-  height: 119px;
+  height: auto;
 }
 
 .lockedPreview img {
@@ -542,28 +802,21 @@ h3 {
 .etsyProductsSlide {
   position: relative;
   flex: 0 0 100%;
-  aspect-ratio: 508 / 629;
+  aspect-ratio: 4 / 5;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 16px;
+  background: #ffffff;
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
 
 .etsyProducts {
-  position: absolute;
-  top: 0;
-  width: 200%;
-  max-width: none;
+  display: block;
+  width: 100%;
   height: 100%;
+  border-radius: inherit;
+  object-fit: contain;
   user-select: none;
-}
-
-.etsyProducts--left {
-  left: 0;
-}
-
-.etsyProducts--right {
-  right: 0;
 }
 
 .etsyProductsDots {
@@ -726,7 +979,12 @@ h3 {
 }
 
 .goals h2 {
-  font-size: 32px;
+  font-size: 27px;
+}
+
+.goals h2 .goalsTitleLine {
+  color: var(--ink);
+  white-space: nowrap;
 }
 
 .limePill {
@@ -753,19 +1011,19 @@ h3 {
   display: grid;
   min-height: 149px;
   align-content: start;
-  justify-items: center;
-  padding: 18px 10px 14px;
+  justify-items: start;
+  padding: 16px 14px;
   border-radius: 18px;
   background: var(--soft-pink);
   box-shadow: 0 4px 0 var(--pink);
-  text-align: center;
+  text-align: left;
 }
 
 .goalGrid i {
   display: grid;
   width: 40px;
   height: 40px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   place-items: center;
 }
 
@@ -775,20 +1033,29 @@ h3 {
   object-fit: contain;
 }
 
+.goalGrid h3 {
+  margin: 0 0 5px;
+  font-family: "Geologica", Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.15;
+  text-transform: none;
+}
+
 .goalGrid p {
   margin: 0;
   font-size: 14px;
   font-weight: 400;
-  line-height: 1.18;
-}
-
-.goalGrid strong {
-  font-weight: 800;
+  line-height: 1.25;
 }
 
 .audienceList {
   display: grid;
   gap: 34px;
+}
+
+.audience .cta {
+  margin-top: 28px;
 }
 
 .audienceCard {
@@ -836,18 +1103,22 @@ h3 {
 
 .audienceCard h3 {
   margin-bottom: 9px;
-  font-size: 18px;
+  font-family: "Geologica", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.15;
+  text-transform: none;
 }
 
 .audienceCard p {
   margin: 0;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.28;
 }
 
 .audienceCard p strong {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .host h2 {
@@ -934,14 +1205,20 @@ h3 {
   flex: 0 0 auto;
 }
 
+.checkList strong {
+  color: var(--pink);
+  font-weight: 700;
+}
+
 .paper i {
   display: grid;
-  width: 22px;
+  width: 34px;
   height: 22px;
   place-items: center;
-  border-radius: 50%;
+  border-radius: 999px;
   background: var(--lime);
   color: #000;
+  font-size: 12px;
   font-style: normal;
   font-weight: 800;
 }
@@ -1001,30 +1278,41 @@ h3 {
 }
 
 .practiceList article {
-  padding: 30px;
+  position: sticky;
+  top: var(--stack-offset);
+  z-index: var(--stack-layer);
+  padding: 16px;
   border-radius: 20px;
   background: var(--soft-pink);
   box-shadow: 0 6px 0 var(--lime);
+  overflow: hidden;
 }
 
 .practiceList img {
   width: 100%;
   height: 264px;
   margin-bottom: 24px;
+  border: 1px solid rgba(54, 43, 49, 0.14);
   border-radius: 14px;
   object-fit: cover;
 }
 
 .practiceList h3 {
+  max-width: 100%;
   color: var(--pink);
   font-size: 22px;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .practiceList p {
+  max-width: 100%;
   margin: 16px 0 0;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 1.25;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .practiceList p strong {
@@ -1039,22 +1327,24 @@ h3 {
   margin-bottom: 14px;
 }
 
-.videoBox {
+.exampleMedia {
   position: relative;
   display: grid;
-  height: 329px;
+  width: 360px;
+  max-width: 100%;
+  aspect-ratio: 4 / 5;
   place-items: center;
-  margin: 28px 0 20px;
+  margin: 28px auto 20px;
   border-radius: 18px;
   background: #ffffff;
   overflow: hidden;
   touch-action: pan-y;
 }
 
-.videoBox .exampleSlide {
+.exampleMedia .exampleSlide {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   will-change: opacity, transform;
 }
 
@@ -1064,23 +1354,6 @@ h3 {
 
 .exampleSlide--previous {
   animation: studentSlideInPrevious 340ms cubic-bezier(0.22, 0.8, 0.24, 1) both;
-}
-
-.playButton {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  padding: 0;
-  place-items: center;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-}
-
-.playButton img {
-  display: block;
-  width: 78px;
-  height: 78px;
 }
 
 .arrows {
@@ -1117,10 +1390,23 @@ h3 {
 }
 
 .examples > p:last-child {
-  margin: 0;
+  width: 330px;
+  max-width: 100%;
+  margin: 0 auto;
   color: var(--muted);
-  font-size: 18px;
-  line-height: 1.25;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.examplesCaption span,
+.examplesCaption strong {
+  display: block;
+}
+
+.examplesCaption strong {
+  color: var(--pink);
+  font-weight: 700;
 }
 
 .paper {
@@ -1149,7 +1435,7 @@ h3 {
 .paper p {
   position: relative;
   z-index: 1;
-  grid-template-columns: 22px 1fr;
+  grid-template-columns: 34px 1fr;
   gap: 10px;
   padding: 16px 0;
   font-size: 18px;
@@ -1399,6 +1685,10 @@ h3 {
   text-align: left;
 }
 
+.final > .cta {
+  margin-top: 20px;
+}
+
 .finalLessons .lessonCard h3 {
   color: var(--ink);
   text-align: left;
@@ -1442,7 +1732,10 @@ h3 {
 }
 
 @media (max-width: 390px) {
-  .hero h1,
+  .hero h1 {
+    font-size: 26px;
+  }
+
   .final h2 {
     font-size: 26px;
   }
