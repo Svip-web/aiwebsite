@@ -157,6 +157,10 @@ img {
 }
 
 .hero .profession {
+  width: 300px;
+  max-width: calc(100% - 32px);
+  margin-right: auto;
+  margin-left: auto;
   font-size: 15px;
   letter-spacing: 1.5px;
 }
@@ -475,7 +479,7 @@ h3 {
 .registrationModal h2 {
   max-width: 350px;
   color: var(--ink);
-  font-size: 25px;
+  font-size: 21px;
   line-height: 1.08;
   text-align: left;
 }
