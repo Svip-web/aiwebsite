@@ -299,10 +299,10 @@ h3 {
   aspect-ratio: 382 / 536;
   min-height: 0;
   padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  overflow: visible;
+  border: 1px solid var(--lime);
+  border-radius: 20px;
+  background: #ffffff;
+  overflow: hidden;
 }
 
 .heroPhoto img {
@@ -1108,7 +1108,7 @@ h3 {
 .audienceCard h3 {
   margin-bottom: 9px;
   font-family: "Geologica", Arial, Helvetica, sans-serif;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 700;
   line-height: 1.15;
   text-transform: none;
@@ -1304,9 +1304,10 @@ h3 {
 .practiceList h3 {
   max-width: 100%;
   color: var(--pink);
-  font-size: 22px;
-  overflow-wrap: break-word;
-  hyphens: auto;
+  font-size: 18px;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
 }
 
 .practiceList p {

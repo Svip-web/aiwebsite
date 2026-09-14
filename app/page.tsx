@@ -5,7 +5,7 @@ import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
 
 const arrowImage = asset("figma-assets/arrow.png");
-const heroImage = asset("figma-assets/hero-main.png");
+const heroImage = asset("figma-assets/hero-speaker.webp");
 
 const lessonImages = [
   asset("figma-assets/bonus-video-strategy.webp"),
@@ -15,10 +15,13 @@ const lessonImages = [
 
 const etsyProductSlides = Array.from(
   { length: 8 },
-  (_, index) => asset(`figma-assets/etsy-upload-${index + 1}.webp`),
+  (_, index) => asset(`figma-assets/etsy-market-${index + 1}.webp`),
 );
 
-const exampleSlides = etsyProductSlides;
+const exampleSlides = Array.from(
+  { length: 8 },
+  (_, index) => asset(`figma-assets/etsy-upload-${index + 1}.webp`),
+);
 
 const heroBenefits = [
   {
