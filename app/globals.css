@@ -504,6 +504,15 @@ h3 {
   font-weight: 700;
 }
 
+.registrationModal .iti {
+  display: block;
+  width: 100%;
+}
+
+.registrationModal .iti__selected-flag {
+  color: var(--ink);
+}
+
 .registrationModal input[type="text"],
 .registrationModal input[type="email"],
 .registrationModal input[type="tel"] {

@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import intlTelInput from "intl-tel-input";
+import "intl-tel-input/build/css/intlTelInput.css";
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
 
@@ -475,28 +477,100 @@ function CountdownTimer() {
   );
 }
 
-function formatUkrainianPhone(value: string) {
-  const digits = value.replace(/\D/g, "");
-  const untrimmedLocalNumber = digits.startsWith("380")
-    ? digits.slice(3)
-    : digits;
-  const localNumber = (untrimmedLocalNumber.startsWith("0")
-    ? untrimmedLocalNumber.slice(1)
-    : untrimmedLocalNumber
-  ).slice(0, 9);
-  const groups = [
-    localNumber.slice(0, 2),
-    localNumber.slice(2, 5),
-    localNumber.slice(5, 7),
-    localNumber.slice(7, 9),
-  ].filter(Boolean);
+function PhoneInput() {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const hiddenInputRef = useRef<HTMLInputElement>(null);
 
-  return `+380${groups.length ? ` ${groups.join(" ")}` : ""}`;
+  useEffect(() => {
+    const input = inputRef.current;
+    const hiddenInput = hiddenInputRef.current;
+    if (!input || !hiddenInput) return;
+
+    let active = true;
+    const phonePicker = intlTelInput(input, {
+      initialCountry: "auto",
+      preferredCountries: ["ua"],
+      excludeCountries: ["ru", "by"],
+      separateDialCode: true,
+      formatOnDisplay: true,
+      autoPlaceholder: "aggressive",
+      utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.3/build/js/utils.js",
+      geoIpLookup: (setCountry) => {
+        fetch("https://ipinfo.io/json")
+          .then((response) => response.json())
+          .then((location: { country?: string }) => setCountry(location.country?.toLowerCase() || "ua"))
+          .catch(() => setCountry("ua"));
+      },
+    });
+
+    const updatePattern = () => {
+      if (!input.placeholder) return;
+      input.pattern = input.placeholder.replace(/[0-9]/g, "\\d");
+    };
+
+    const syncFullNumber = () => {
+      const nationalNumber = input.value.replace(/\D/g, "");
+      const dialCode = phonePicker.getSelectedCountryData().dialCode;
+      hiddenInput.value = nationalNumber && dialCode ? `+${dialCode}${nationalNumber}` : "";
+    };
+
+    const applyCountryMask = () => {
+      const digits = input.value.replace(/\D/g, "");
+      const template = input.placeholder;
+      let digitIndex = 0;
+      let formatted = "";
+
+      for (const character of template) {
+        if (/[0-9]/.test(character)) {
+          if (digitIndex >= digits.length) break;
+          formatted += digits[digitIndex];
+          digitIndex += 1;
+        } else if (digitIndex > 0 && digitIndex < digits.length) {
+          formatted += character;
+        }
+      }
+
+      input.value = formatted;
+      syncFullNumber();
+    };
+
+    const handleCountryChange = () => {
+      input.value = "";
+      hiddenInput.value = "";
+      window.setTimeout(updatePattern, 0);
+    };
+
+    input.addEventListener("input", applyCountryMask);
+    input.addEventListener("countrychange", handleCountryChange);
+    phonePicker.promise.then(() => {
+      if (active) updatePattern();
+    });
+
+    return () => {
+      active = false;
+      input.removeEventListener("input", applyCountryMask);
+      input.removeEventListener("countrychange", handleCountryChange);
+      phonePicker.destroy();
+    };
+  }, []);
+
+  return (
+    <>
+      <input
+        ref={inputRef}
+        name="phone_intlTelInput"
+        type="tel"
+        autoComplete="tel"
+        inputMode="tel"
+        required
+      />
+      <input ref={hiddenInputRef} name="phone" type="hidden" />
+    </>
+  );
 }
 
 function RegistrationModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [submitted, setSubmitted] = useState(false);
-  const [phone, setPhone] = useState("");
 
   useEffect(() => {
     if (!open) return;
@@ -522,7 +596,6 @@ function RegistrationModal({ open, onClose }: { open: boolean; onClose: () => vo
 
   const closeModal = () => {
     setSubmitted(false);
-    setPhone("");
     onClose();
   };
 
@@ -556,20 +629,7 @@ function RegistrationModal({ open, onClose }: { open: boolean; onClose: () => vo
               </label>
               <label>
                 <span>Телефон</span>
-                <input
-                  name="phone"
-                  type="tel"
-                  autoComplete="tel"
-                  inputMode="numeric"
-                  placeholder="+380 00 000 00 00"
-                  value={phone}
-                  onFocus={() => !phone && setPhone("+380")}
-                  onBlur={() => phone === "+380" && setPhone("")}
-                  onChange={(event) => setPhone(formatUkrainianPhone(event.target.value))}
-                  pattern="\+380 \d{2} \d{3} \d{2} \d{2}"
-                  maxLength={17}
-                  required
-                />
+                <PhoneInput />
               </label>
               <button className="modalSubmit" type="submit">Зарегистрироваться и получить бонусы</button>
             </form>
