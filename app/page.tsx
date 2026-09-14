@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
-const telegramBotUrl = "https://telegram.me/etsybot_bot?start=ZGw6MjcwMzQzfDE0MzAzNDExMA";
 
 const arrowImage = asset("figma-assets/arrow.png");
 const heroImage = asset("figma-assets/hero-speaker.webp");
@@ -546,11 +545,7 @@ function RegistrationModal({ open, onClose }: { open: boolean; onClose: () => vo
             <p className="modalEyebrow">Бесплатный онлайн мастер-класс</p>
             <h2 id="registration-title">Зарегистрируйтесь и получите 3 бонуса</h2>
             <p className="modalIntro">Оставьте контакты, чтобы получить доступ к мастер-классу и полезным материалам.</p>
-            <form onSubmit={(event) => {
-              event.preventDefault();
-              setSubmitted(true);
-              window.location.assign(telegramBotUrl);
-            }}>
+            <form name="smartsender" data-name="smartsender">
               <label>
                 <span>Имя</span>
                 <input id="registration-name" name="name" type="text" autoComplete="name" placeholder="Ваше имя" required />
