@@ -751,7 +751,7 @@ export default function Home() {
         <h2>Кто проводит</h2>
         <p className="limePill">мастер-класс?</p>
         <div className="hostPhoto">
-          <img src={asset("figma-assets/gallery-1.png")} alt="Юлия Гроссу" />
+          <img src={asset("figma-assets/host-julia.webp")} alt="Юлия Гроссу" />
           <span>Юлия Гроссу</span>
         </div>
         <div className="checkList">
