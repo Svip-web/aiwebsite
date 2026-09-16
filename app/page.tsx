@@ -15,6 +15,12 @@ const lessonImages = [
   asset("figma-assets/bonus-ai-cheatsheet-mockup.webp"),
 ];
 
+const lessonImagesUs = [
+  asset("figma-assets/bonus-video-strategy-us.webp"),
+  lessonImages[1],
+  lessonImages[2],
+];
+
 const etsyProductSlides = Array.from(
   { length: 8 },
   (_, index) => asset(`figma-assets/etsy-market-${index + 1}.webp`),
@@ -128,9 +134,9 @@ const goals = [
   },
 ];
 
-const hostFacts = [
-  <><strong>10 лет практики на Etsy</strong>, начиная свой путь всего с 300€</>,
-  <>Более <strong>5 000 000€ оборота на Etsy</strong> за 2025 год</>,
+const createHostFacts = (isUsMarket: boolean) => [
+  <><strong>10 лет практики на Etsy</strong>, начиная свой путь всего с {isUsMarket ? "300$" : "300€"}</>,
+  <>Более <strong>{isUsMarket ? "5 000 000$" : "5 000 000€"} оборота на Etsy</strong> за 2025 год</>,
   <>Более <strong>500 учеников</strong> уже прошли обучение по системе Юлии</>,
   <>Лучший кейс ученицы — <strong>$61 697 за один месяц</strong></>,
   <>Эксперт публикуется в <strong>NEW YORK WEEKLY и KIVO DAILY</strong></>,
@@ -170,12 +176,12 @@ const practiceCards = [
   },
 ];
 
-const resultItems = [
+const createResultItems = (isUsMarket: boolean) => [
   <>Поймёте, <strong>как работают разные модели заработка на Etsy</strong></>,
   <>Научитесь находить <strong>прибыльные ниши и товары</strong></>,
   <>Узнаете, <strong>как использовать AI для работы с Etsy</strong></>,
   <>Научитесь создавать <strong>цифровые товары, которые можно продавать снова и снова</strong></>,
-  <>Получите пошаговый план выхода на <strong>доход от 3 000€ в месяц</strong></>,
+  <>Получите пошаговый план выхода на <strong>доход от {isUsMarket ? "3 000$" : "3 000€"} в месяц</strong></>,
 ];
 
 const studentCases = [
@@ -368,18 +374,18 @@ function EtsyProductsSlider() {
   );
 }
 
-function StudentSlider() {
+function StudentSlider({ cases }: { cases: typeof studentCases }) {
   const [activeSlide, setActiveSlide] = useState(0);
   const [slideDirection, setSlideDirection] = useState<"next" | "previous">("next");
   const swipeStart = useRef<number | null>(null);
   const slide = useRef<HTMLDivElement | null>(null);
   const previousSlide = () => {
     setSlideDirection("previous");
-    setActiveSlide((index) => (index - 1 + studentCases.length) % studentCases.length);
+    setActiveSlide((index) => (index - 1 + cases.length) % cases.length);
   };
   const nextSlide = () => {
     setSlideDirection("next");
-    setActiveSlide((index) => (index + 1) % studentCases.length);
+    setActiveSlide((index) => (index + 1) % cases.length);
   };
 
   const finishSwipe = (endX: number) => {
@@ -433,13 +439,13 @@ function StudentSlider() {
           className={`studentCaseSlide studentSlide--${slideDirection}`}
         >
           <header>
-            <strong>{studentCases[activeSlide].name}</strong>
-            <span>{studentCases[activeSlide].meta}</span>
+            <strong>{cases[activeSlide].name}</strong>
+            <span>{cases[activeSlide].meta}</span>
           </header>
           <div className="studentTimeline">
-            <article><b>Точка А</b><p>{studentCases[activeSlide].start}</p></article>
-            <article><b>Промежуточный этап</b><p>{studentCases[activeSlide].middle}</p></article>
-            <article><b>Точка Б</b><p>{studentCases[activeSlide].result}</p></article>
+            <article><b>Точка А</b><p>{cases[activeSlide].start}</p></article>
+            <article><b>Промежуточный этап</b><p>{cases[activeSlide].middle}</p></article>
+            <article><b>Точка Б</b><p>{cases[activeSlide].result}</p></article>
           </div>
         </div>
       </div>
@@ -674,6 +680,20 @@ function FloatingCta({ onClick }: { onClick: () => void }) {
 
 export default function Home() {
   const [isRegistrationOpen, setIsRegistrationOpen] = useState(false);
+  const isUsMarket = typeof window !== "undefined" && /\/us\/?$/.test(window.location.pathname);
+  const marketLessonImages = isUsMarket ? lessonImagesUs : lessonImages;
+  const marketGoals = isUsMarket
+    ? goals.map((goal, index) => index === 1 ? { ...goal, title: "Выйти на доход от 3000$+" } : goal)
+    : goals;
+  const marketHostFacts = createHostFacts(isUsMarket);
+  const marketResultItems = createResultItems(isUsMarket);
+  const marketStudentCases = isUsMarket
+    ? studentCases.map((studentCase) => ({
+        ...studentCase,
+        middle: studentCase.middle.replaceAll("€", "$"),
+        result: studentCase.result.replaceAll("€", "$"),
+      }))
+    : studentCases;
 
   useEffect(() => {
     const sections = Array.from(document.querySelectorAll<HTMLElement>(".page > section:not(.hero)"));
@@ -703,6 +723,9 @@ export default function Home() {
           <i />
           бесплатный онлайн мастер-класс
         </div>
+        <p className="quarterCallout">
+          <strong>Q4</strong> — самый прибыльный сезон года
+        </p>
         <p className="profession">Как создавать принты и цифровые товары</p>
         <h1>с помощью искусственного интеллекта</h1>
         <p className="heroLead">
@@ -710,7 +733,7 @@ export default function Home() {
         </p>
         <div className="zeroTitle">
           <img className="turnArrow" src={asset("figma-assets/arrow-turn.svg")} alt="" aria-hidden="true" />
-          <strong>от 3000€ в месяц</strong>
+          <strong>от {isUsMarket ? "5000$" : "3000€"} в месяц</strong>
         </div>
 
         <div className="heroContent">
@@ -748,20 +771,20 @@ export default function Home() {
           <LessonCard
             label="Видео-бонус №1"
             title="Пошаговая стратегия"
-            subtitle={<>как я заработала <strong>100.000€ всего за 60 дней</strong> на сезонном товаре с помощью ИИ</>}
-            image={lessonImages[0]}
+            subtitle={<>как я заработала <strong>{isUsMarket ? "100.000$" : "100.000€"} всего за 60 дней</strong> на сезонном товаре с помощью ИИ</>}
+            image={marketLessonImages[0]}
           />
           <LessonCard
             label="Бонус №2"
             title="Список товаров"
             subtitle={<>которые можно запустить прямо сейчас и получить <strong>первые заказы уже через 14 дней</strong> (идеально перед 4 кварталом)</>}
-            image={lessonImages[1]}
+            image={marketLessonImages[1]}
           />
           <LessonCard
             label="Бонус №3"
             title="Шпаргалка по искусственному интеллекту."
             subtitle={<>Все мои <strong>ТОП наработки в одном PDF</strong></>}
-            image={lessonImages[2]}
+            image={marketLessonImages[2]}
             tall
           />
         </div>
@@ -778,7 +801,7 @@ export default function Home() {
         <h2><span>Регистрируйся</span><br /><span className="goalsTitleLine">на мастер-класс</span></h2>
         <p className="limePill">если хочешь:</p>
         <div className="goalGrid">
-          {goals.map((goal, index) => (
+          {marketGoals.map((goal, index) => (
             <article key={goal.title}>
               <i>
                 <img src={asset(`figma-assets/goal-${index + 1}.svg`)} alt="" aria-hidden="true" />
@@ -815,7 +838,7 @@ export default function Home() {
           <span>Юлия Гроссу</span>
         </div>
         <div className="checkList">
-          {hostFacts.map((fact, index) => (
+          {marketHostFacts.map((fact, index) => (
             <p key={index}>
               <img src={asset("figma-assets/check.svg")} alt="" />
               <span>{fact}</span>
@@ -862,7 +885,7 @@ export default function Home() {
           className="paper"
           style={{ "--typewriter-image": `url(${asset("figma-assets/results-typewriter.png")})` } as CSSProperties}
         >
-          {resultItems.map((item, index) => (
+          {marketResultItems.map((item, index) => (
             <p key={index}><i>{String(index + 1).padStart(2, "0")}.</i><span>{item}</span></p>
           ))}
         </div>
@@ -872,7 +895,7 @@ export default function Home() {
         <h2>Студенты</h2>
         <p className="limePill">те, кто начал свой путь в Etsy,</p>
         <p className="limePill">придя на наш мастер-класс</p>
-        <StudentSlider />
+        <StudentSlider cases={marketStudentCases} />
       </section>
 
       <section className="final bgGrid" id="final">
@@ -885,7 +908,7 @@ export default function Home() {
         <p className="heroLead"><b>с помощью искусственного интеллекта и выйти на доход</b></p>
         <div className="zeroTitle">
           <img className="turnArrow" src={asset("figma-assets/arrow-turn.svg")} alt="" aria-hidden="true" />
-          <strong>от 3000€ в месяц</strong>
+          <strong>от {isUsMarket ? "5000$" : "3000€"} в месяц</strong>
         </div>
         <img className="giftIcon" src={asset("figma-assets/gift-icon.svg")} alt="" aria-hidden="true" />
         <p className="pinkText">Первые 100 участников мастер-класса</p>
@@ -896,20 +919,20 @@ export default function Home() {
             <LessonCard
               label="Видео-бонус №1"
               title="Пошаговая стратегия"
-              subtitle={<>как я заработала <strong>100.000€ всего за 60 дней</strong> на сезонном товаре с помощью ИИ</>}
-              image={lessonImages[0]}
+              subtitle={<>как я заработала <strong>{isUsMarket ? "100.000$" : "100.000€"} всего за 60 дней</strong> на сезонном товаре с помощью ИИ</>}
+              image={marketLessonImages[0]}
             />
             <LessonCard
               label="Бонус №2"
               title="Список товаров"
               subtitle={<>которые можно запустить прямо сейчас и получить <strong>первые заказы уже через 14 дней</strong> (идеально перед 4 кварталом)</>}
-              image={lessonImages[1]}
+              image={marketLessonImages[1]}
             />
             <LessonCard
               label="Бонус №3"
               title="Шпаргалка по искусственному интеллекту."
               subtitle={<>Все мои <strong>ТОП наработки в одном PDF</strong></>}
-              image={lessonImages[2]}
+              image={marketLessonImages[2]}
               tall
             />
           </div>

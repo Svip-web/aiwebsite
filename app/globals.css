@@ -114,7 +114,7 @@ img {
   width: 285px;
   height: 28px;
   justify-content: center;
-  margin-bottom: 26px;
+  margin-bottom: 0;
   border: 1px solid rgba(233, 218, 218, 0.54);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.74);
@@ -163,6 +163,28 @@ img {
   margin-left: auto;
   font-size: 15px;
   letter-spacing: 1.5px;
+}
+
+.quarterCallout {
+  width: max-content;
+  max-width: calc(100% - 32px);
+  margin: 4px auto 10px;
+  padding: 6px 12px 7px;
+  border: 1px solid rgba(252, 85, 155, 0.45);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--ink);
+  font-family: "Unbounded", Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.quarterCallout strong {
+  color: var(--pink);
 }
 
 .final .profession {
