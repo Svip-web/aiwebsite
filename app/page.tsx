@@ -813,7 +813,7 @@ export default function Home() {
               </p>
             ))}
           </div>
-          <div className="heroPhoto">
+          <div className={`heroPhoto${isAnimation ? " heroPhoto--animation" : ""}`}>
             <img
               src={heroImage}
               alt={isAnimation ? "Мастер-класс по созданию AI-анимаций" : "Принты и цифровые товары с помощью искусственного интеллекта"}
@@ -823,6 +823,26 @@ export default function Home() {
               decoding="sync"
               fetchPriority="high"
             />
+            {isAnimation && (
+              <div className="heroVideoRail" aria-label="Примеры AI-анимаций учеников">
+                <div className="heroVideoTrack">
+                  {animationStudentVideos.map((item, index) => (
+                    <video
+                      key={item.video}
+                      src={item.video}
+                      poster={item.poster}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="auto"
+                      onCanPlay={(event) => void event.currentTarget.play().catch(() => undefined)}
+                      aria-label={`Пример AI-анимации ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
         <CtaButton onClick={() => setIsRegistrationOpen(true)} />
