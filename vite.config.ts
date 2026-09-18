@@ -11,6 +11,8 @@ export default defineConfig({
         main: resolve(__dirname, "index.html"),
         us: resolve(__dirname, "us/index.html"),
         animation: resolve(__dirname, "animation/index.html"),
+        animationUs: resolve(__dirname, "animation/us/index.html"),
+        animationEu: resolve(__dirname, "animation/eu/index.html"),
       },
     },
   },

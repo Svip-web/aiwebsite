@@ -35,17 +35,17 @@ const animationStudentVideos = [
   {
     video: asset("figma-assets/animation-student-1.mp4"),
     poster: asset("figma-assets/animation-student-1.webp"),
-    price: "$100",
+    price: 100,
   },
   {
     video: asset("figma-assets/animation-student-2.mp4"),
     poster: asset("figma-assets/animation-student-2.webp"),
-    price: "$150",
+    price: 150,
   },
   {
     video: asset("figma-assets/animation-student-3.mp4"),
     poster: asset("figma-assets/animation-student-3.webp"),
-    price: "$200",
+    price: 200,
   },
 ];
 
@@ -737,13 +737,15 @@ function FloatingCta({ onClick }: { onClick: () => void }) {
 
 export default function Home() {
   const [isRegistrationOpen, setIsRegistrationOpen] = useState(false);
+  const market = typeof document !== "undefined" ? document.documentElement.dataset.market : undefined;
   const isAnimation =
     typeof document !== "undefined" &&
-    (document.documentElement.dataset.market === "animation" || /\/animation\/?$/.test(window.location.pathname));
+    (market?.startsWith("animation") || /\/animation(?:\/(?:us|eu))?\/?$/.test(window.location.pathname));
   const isUsMarket =
     typeof document !== "undefined" &&
-    (document.documentElement.dataset.market === "us" || /\/us\/?$/.test(window.location.pathname));
-  const usesDollars = isUsMarket || isAnimation;
+    (market === "us" || market === "animation-us" || /\/us\/?$/.test(window.location.pathname));
+  const isEuropeanAnimation = market === "animation-eu" || /\/animation\/eu\/?$/.test(window.location.pathname);
+  const usesDollars = isUsMarket || (isAnimation && !isEuropeanAnimation);
   const marketLessonImages = usesDollars ? lessonImagesUs : lessonImages;
   const marketGoals = usesDollars
     ? goals.map((goal, index) => index === 1 ? { ...goal, title: "Выйти на доход от 3000$+" } : goal)
@@ -846,7 +848,7 @@ export default function Home() {
                         }}
                         aria-label={`Пример AI-анимации ${(index % animationStudentVideos.length) + 1}`}
                       />
-                      <span className="heroVideoPrice">{item.price}</span>
+                      <span className="heroVideoPrice">{usesDollars ? `$${item.price}` : `${item.price}€`}</span>
                     </div>
                   ))}
                 </div>
