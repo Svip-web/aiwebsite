@@ -827,18 +827,23 @@ export default function Home() {
               <div className="heroVideoRail" aria-label="Примеры AI-анимаций учеников">
                 <div className="heroVideoTrack">
                   {animationStudentVideos.map((item, index) => (
-                    <video
-                      key={item.video}
-                      src={item.video}
-                      poster={item.poster}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      preload="auto"
-                      onCanPlay={(event) => void event.currentTarget.play().catch(() => undefined)}
-                      aria-label={`Пример AI-анимации ${index + 1}`}
-                    />
+                    <div className="heroVideoTile" key={item.video}>
+                      <img src={item.poster} alt="" aria-hidden="true" />
+                      <video
+                        src={item.video}
+                        poster={item.poster}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="auto"
+                        onCanPlay={(event) => {
+                          event.currentTarget.classList.add("isReady");
+                          void event.currentTarget.play().catch(() => undefined);
+                        }}
+                        aria-label={`Пример AI-анимации ${index + 1}`}
+                      />
+                    </div>
                   ))}
                 </div>
               </div>
