@@ -351,7 +351,7 @@ h3 {
   left: 7px;
   z-index: 2;
   height: 104px;
-  border: 2px solid rgba(252, 85, 155, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.82);
   border-radius: 11px;
   background: rgba(255, 255, 255, 0.88);
   box-shadow: 0 8px 20px rgba(22, 18, 22, 0.2);
@@ -365,7 +365,7 @@ h3 {
   width: max-content;
   height: 100%;
   padding: 5px;
-  animation: heroVideoMarquee 8s ease-in-out infinite alternate;
+  animation: heroVideoMarquee 10s linear infinite;
   will-change: transform;
 }
 
@@ -397,13 +397,30 @@ h3 {
   opacity: 1;
 }
 
+.heroVideoPrice {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  z-index: 3;
+  min-width: 30px;
+  padding: 3px 6px;
+  border-radius: 999px;
+  background: var(--lime);
+  color: #000000;
+  font-family: "Unbounded", Arial, Helvetica, sans-serif;
+  font-size: 8px;
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+}
+
 @keyframes heroVideoMarquee {
   from {
     transform: translateX(0);
   }
 
   to {
-    transform: translateX(-74px);
+    transform: translateX(-225px);
   }
 }
 

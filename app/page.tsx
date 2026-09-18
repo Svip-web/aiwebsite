@@ -35,14 +35,17 @@ const animationStudentVideos = [
   {
     video: asset("figma-assets/animation-student-1.mp4"),
     poster: asset("figma-assets/animation-student-1.webp"),
+    price: "$29",
   },
   {
     video: asset("figma-assets/animation-student-2.mp4"),
     poster: asset("figma-assets/animation-student-2.webp"),
+    price: "$35",
   },
   {
     video: asset("figma-assets/animation-student-3.mp4"),
     poster: asset("figma-assets/animation-student-3.webp"),
+    price: "$39",
   },
 ];
 
@@ -826,8 +829,8 @@ export default function Home() {
             {isAnimation && (
               <div className="heroVideoRail" aria-label="Примеры AI-анимаций учеников">
                 <div className="heroVideoTrack">
-                  {animationStudentVideos.map((item, index) => (
-                    <div className="heroVideoTile" key={item.video}>
+                  {[...animationStudentVideos, ...animationStudentVideos].map((item, index) => (
+                    <div className="heroVideoTile" key={`${item.video}-${index}`}>
                       <img src={item.poster} alt="" aria-hidden="true" />
                       <video
                         src={item.video}
@@ -841,8 +844,9 @@ export default function Home() {
                           event.currentTarget.classList.add("isReady");
                           void event.currentTarget.play().catch(() => undefined);
                         }}
-                        aria-label={`Пример AI-анимации ${index + 1}`}
+                        aria-label={`Пример AI-анимации ${(index % animationStudentVideos.length) + 1}`}
                       />
+                      <span className="heroVideoPrice">{item.price}</span>
                     </div>
                   ))}
                 </div>
