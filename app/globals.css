@@ -879,6 +879,34 @@ h3 {
   margin-top: 14px;
 }
 
+.animationSlider {
+  width: 100%;
+}
+
+.animationVideoFrame,
+.animationLiveVideo {
+  width: min(300px, calc(100% - 36px));
+  aspect-ratio: 9 / 16;
+  margin: 0 auto;
+  border: 1px solid rgba(54, 43, 49, 0.14);
+  border-radius: 18px;
+  background: #171717;
+  box-shadow: 0 14px 34px rgba(32, 32, 36, 0.12);
+  overflow: hidden;
+}
+
+.animationVideoFrame video,
+.animationLiveVideo video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.animationSlider .arrows {
+  margin-top: 14px;
+}
+
 .brandMarquee {
   display: grid;
   gap: 8px;
@@ -1361,6 +1389,34 @@ h3 {
 
 .examples h2 {
   margin-bottom: 14px;
+}
+
+.animationLiveLead {
+  width: min(330px, 100%);
+  margin: 8px auto 26px;
+  color: var(--ink);
+  font-family: "Unbounded", Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.animationLiveVideo {
+  width: min(320px, calc(100% - 24px));
+  margin-bottom: 8px;
+}
+
+.page--animation .hero .profession {
+  width: 330px;
+}
+
+.page--animation .heroBenefits {
+  align-content: center;
+}
+
+.page--animation .practiceList article:last-child img {
+  object-position: center 24%;
 }
 
 .exampleMedia {

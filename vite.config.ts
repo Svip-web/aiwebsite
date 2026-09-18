@@ -10,6 +10,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         us: resolve(__dirname, "us/index.html"),
+        animation: resolve(__dirname, "animation/index.html"),
       },
     },
   },

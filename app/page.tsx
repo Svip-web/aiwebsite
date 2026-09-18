@@ -31,6 +31,28 @@ const exampleSlides = Array.from(
   (_, index) => asset(`figma-assets/etsy-upload-${index + 1}.webp`),
 );
 
+const animationStudentVideos = [
+  {
+    video: asset("figma-assets/animation-student-1.mp4"),
+    poster: asset("figma-assets/animation-student-1.webp"),
+  },
+  {
+    video: asset("figma-assets/animation-student-2.mp4"),
+    poster: asset("figma-assets/animation-student-2.webp"),
+  },
+  {
+    video: asset("figma-assets/animation-student-3.mp4"),
+    poster: asset("figma-assets/animation-student-3.webp"),
+  },
+];
+
+const animationHeroBenefits = [
+  { icon: asset("figma-assets/benefit-fire.svg"), text: <><b>С полного нуля.</b></> },
+  { icon: asset("figma-assets/benefit-wallet.svg"), text: <><b>Без дизайнерских навыков.</b></> },
+  { icon: asset("figma-assets/benefit-heart.svg"), text: <><b>Без опыта.</b></> },
+  { icon: asset("figma-assets/benefit-laptop.svg"), text: <><b>Без сложных программ.</b></> },
+];
+
 const heroBenefits = [
   {
     icon: asset("figma-assets/benefit-fire.svg"),
@@ -374,6 +396,38 @@ function EtsyProductsSlider() {
   );
 }
 
+function AnimationSlider() {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const previousSlide = () => setActiveSlide((index) => (index - 1 + animationStudentVideos.length) % animationStudentVideos.length);
+  const nextSlide = () => setActiveSlide((index) => (index + 1) % animationStudentVideos.length);
+
+  return (
+    <div className="animationSlider">
+      <div className="animationVideoFrame">
+        <video
+          key={animationStudentVideos[activeSlide].video}
+          src={animationStudentVideos[activeSlide].video}
+          poster={animationStudentVideos[activeSlide].poster}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          onCanPlay={(event) => void event.currentTarget.play().catch(() => undefined)}
+          aria-label={`AI-анимация ученика ${activeSlide + 1}`}
+        />
+      </div>
+      <div className="etsyProductsDots" aria-hidden="true">
+        {animationStudentVideos.map((_, index) => <i className={activeSlide === index ? "isActive" : ""} key={index} />)}
+      </div>
+      <div className="arrows">
+        <button type="button" aria-label="Предыдущая анимация" onClick={previousSlide}><img src={asset("figma-assets/arrow-left.svg")} alt="" /></button>
+        <button type="button" aria-label="Следующая анимация" onClick={nextSlide}><img src={asset("figma-assets/arrow-right.svg")} alt="" /></button>
+      </div>
+    </div>
+  );
+}
+
 function StudentSlider({ cases }: { cases: typeof studentCases }) {
   const [activeSlide, setActiveSlide] = useState(0);
   const [slideDirection, setSlideDirection] = useState<"next" | "previous">("next");
@@ -680,20 +734,34 @@ function FloatingCta({ onClick }: { onClick: () => void }) {
 
 export default function Home() {
   const [isRegistrationOpen, setIsRegistrationOpen] = useState(false);
-  const isUsMarket = typeof window !== "undefined" && /\/us\/?$/.test(window.location.pathname);
-  const marketLessonImages = isUsMarket ? lessonImagesUs : lessonImages;
-  const marketGoals = isUsMarket
+  const isAnimation =
+    typeof document !== "undefined" &&
+    (document.documentElement.dataset.market === "animation" || /\/animation\/?$/.test(window.location.pathname));
+  const isUsMarket =
+    typeof document !== "undefined" &&
+    (document.documentElement.dataset.market === "us" || /\/us\/?$/.test(window.location.pathname));
+  const usesDollars = isUsMarket || isAnimation;
+  const marketLessonImages = usesDollars ? lessonImagesUs : lessonImages;
+  const marketGoals = usesDollars
     ? goals.map((goal, index) => index === 1 ? { ...goal, title: "Выйти на доход от 3000$+" } : goal)
     : goals;
-  const marketHostFacts = createHostFacts(isUsMarket);
-  const marketResultItems = createResultItems(isUsMarket);
-  const marketStudentCases = isUsMarket
+  const marketHostFacts = createHostFacts(usesDollars);
+  const marketResultItems = createResultItems(usesDollars);
+  const marketStudentCases = usesDollars
     ? studentCases.map((studentCase) => ({
         ...studentCase,
         middle: studentCase.middle.replaceAll("€", "$"),
         result: studentCase.result.replaceAll("€", "$"),
       }))
     : studentCases;
+  const marketPracticeCards = isAnimation
+    ? practiceCards.map((card, index) => index === 5 ? {
+        ...card,
+        image: asset("figma-assets/animation-live-poster.webp"),
+        title: "06. Создадим свою AI-анимацию",
+        text: <>Прямо в эфире покажем поэтапно, как с помощью искусственного интеллекта и наших программ <strong>создавать AI-анимации с нуля.</strong></>,
+      } : card)
+    : practiceCards;
 
   useEffect(() => {
     const sections = Array.from(document.querySelectorAll<HTMLElement>(".page > section:not(.hero)"));
@@ -717,7 +785,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="page">
+    <main className={`page${isAnimation ? " page--animation" : ""}`}>
       <section className="hero bgGrid">
         <div className="topPill">
           <i />
@@ -726,19 +794,19 @@ export default function Home() {
         <p className="quarterCallout">
           <strong>Q4</strong> — самый прибыльный сезон года
         </p>
-        <p className="profession">Как создавать принты и цифровые товары</p>
+        <p className="profession">{isAnimation ? "Как создавать AI-анимации" : "Как создавать принты и цифровые товары"}</p>
         <h1>с помощью искусственного интеллекта</h1>
         <p className="heroLead">
           <b>и выйти на доход</b>
         </p>
         <div className="zeroTitle">
           <img className="turnArrow" src={asset("figma-assets/arrow-turn.svg")} alt="" aria-hidden="true" />
-          <strong>от {isUsMarket ? "5000$" : "3000€"} в месяц</strong>
+          <strong>от {usesDollars ? "$5 000" : "3000€"} в месяц</strong>
         </div>
 
         <div className="heroContent">
           <div className="heroBenefits">
-            {heroBenefits.map((benefit) => (
+            {(isAnimation ? animationHeroBenefits : heroBenefits).map((benefit) => (
               <p key={benefit.icon}>
                 <img src={benefit.icon} alt="" aria-hidden="true" />
                 <span>{benefit.text}</span>
@@ -748,7 +816,7 @@ export default function Home() {
           <div className="heroPhoto">
             <img
               src={heroImage}
-              alt="Принты и цифровые товары с помощью искусственного интеллекта"
+              alt={isAnimation ? "Мастер-класс по созданию AI-анимаций" : "Принты и цифровые товары с помощью искусственного интеллекта"}
               width={382}
               height={536}
               loading="eager"
@@ -771,7 +839,7 @@ export default function Home() {
           <LessonCard
             label="Видео-бонус №1"
             title="Пошаговая стратегия"
-            subtitle={<>как я заработала <strong>{isUsMarket ? "100.000$" : "100.000€"} всего за 60 дней</strong> на сезонном товаре с помощью ИИ</>}
+            subtitle={<>как я заработала <strong>{usesDollars ? "100.000$" : "100.000€"} всего за 60 дней</strong> на сезонном товаре с помощью ИИ</>}
             image={marketLessonImages[0]}
           />
           <LessonCard
@@ -792,9 +860,9 @@ export default function Home() {
       </section>
 
       <section className="brands bgGrid">
-        <h2>На каких товарах уже <span>зарабатывают</span> наши ученики?</h2>
-        <p>Реальные товары и ниши, которые наши ученики <strong>уже продают на Etsy прямо сейчас</strong></p>
-        <EtsyProductsSlider />
+        <h2>На каких {isAnimation ? "анимациях" : "товарах"} уже <span>зарабатывают</span> наши ученики?</h2>
+        <p>Реальные {isAnimation ? "анимации" : "товары и ниши"}, которые наши ученики <strong>уже продают на Etsy прямо сейчас</strong></p>
+        {isAnimation ? <AnimationSlider /> : <EtsyProductsSlider />}
       </section>
 
       <section className="goals bgGrid">
@@ -852,7 +920,7 @@ export default function Home() {
         <h2>Что вас ждёт</h2>
         <p className="limePill">на мастер-классе?</p>
         <div className="practiceList">
-          {practiceCards.map((card, index) => (
+          {marketPracticeCards.map((card, index) => (
             <article
               key={card.title}
               style={{
@@ -869,13 +937,35 @@ export default function Home() {
       </section>
 
       <section className="examples pinkPanel">
-        <h2>Товары, которые вы научитесь создавать</h2>
-        <ExampleSlider />
-        <p className="examplesCaption">
-          <span>Листайте примеры и посмотрите,</span>
-          <strong>на каких товарах и нишах</strong>
-          <span>зарабатывают наши ученики на Etsy.</span>
-        </p>
+        {isAnimation ? (
+          <>
+            <h2>Этот AI-мультфильм</h2>
+            <p className="animationLiveLead">мы создадим прямо на эфире</p>
+            <div className="animationLiveVideo">
+              <video
+                src={asset("figma-assets/animation-live-cartoon.mp4")}
+                poster={asset("figma-assets/animation-live-poster.webp")}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                onCanPlay={(event) => void event.currentTarget.play().catch(() => undefined)}
+                aria-label="AI-мультфильм, который создадим в прямом эфире"
+              />
+            </div>
+          </>
+        ) : (
+          <>
+            <h2>Товары, которые вы научитесь создавать</h2>
+            <ExampleSlider />
+            <p className="examplesCaption">
+              <span>Листайте примеры и посмотрите,</span>
+              <strong>на каких товарах и нишах</strong>
+              <span>зарабатывают наши ученики на Etsy.</span>
+            </p>
+          </>
+        )}
       </section>
 
       <section className="results bgGrid">
@@ -902,13 +992,12 @@ export default function Home() {
         <p className="profession">Бесплатный онлайн мастер-класс</p>
         <h2>
           <span>Как создавать</span>
-          <span>принты и</span>
-          <span>цифровые товары</span>
+          {isAnimation ? <span>AI-анимации</span> : <><span>принты и</span><span>цифровые товары</span></>}
         </h2>
         <p className="heroLead"><b>с помощью искусственного интеллекта и выйти на доход</b></p>
         <div className="zeroTitle">
           <img className="turnArrow" src={asset("figma-assets/arrow-turn.svg")} alt="" aria-hidden="true" />
-          <strong>от {isUsMarket ? "5000$" : "3000€"} в месяц</strong>
+          <strong>от {usesDollars ? "$5 000" : "3000€"} в месяц</strong>
         </div>
         <img className="giftIcon" src={asset("figma-assets/gift-icon.svg")} alt="" aria-hidden="true" />
         <p className="pinkText">Первые 100 участников мастер-класса</p>
@@ -919,7 +1008,7 @@ export default function Home() {
             <LessonCard
               label="Видео-бонус №1"
               title="Пошаговая стратегия"
-              subtitle={<>как я заработала <strong>{isUsMarket ? "100.000$" : "100.000€"} всего за 60 дней</strong> на сезонном товаре с помощью ИИ</>}
+              subtitle={<>как я заработала <strong>{usesDollars ? "100.000$" : "100.000€"} всего за 60 дней</strong> на сезонном товаре с помощью ИИ</>}
               image={marketLessonImages[0]}
             />
             <LessonCard
