@@ -35,17 +35,17 @@ const animationStudentVideos = [
   {
     video: asset("figma-assets/animation-student-1.mp4"),
     poster: asset("figma-assets/animation-student-1.webp"),
-    price: "$29",
+    price: "$100",
   },
   {
     video: asset("figma-assets/animation-student-2.mp4"),
     poster: asset("figma-assets/animation-student-2.webp"),
-    price: "$35",
+    price: "$150",
   },
   {
     video: asset("figma-assets/animation-student-3.mp4"),
     poster: asset("figma-assets/animation-student-3.webp"),
-    price: "$39",
+    price: "$200",
   },
 ];
 
