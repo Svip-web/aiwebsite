@@ -346,15 +346,15 @@ h3 {
 
 .heroVideoRail {
   position: absolute;
-  right: 7px;
-  bottom: 8px;
-  left: 7px;
+  right: -1px;
+  bottom: -1px;
+  left: -1px;
   z-index: 2;
   height: 104px;
-  border: 1px solid rgba(255, 255, 255, 0.82);
-  border-radius: 11px;
+  border: 0;
+  border-radius: 0 0 19px 19px;
   background: rgba(255, 255, 255, 0.88);
-  box-shadow: 0 8px 20px rgba(22, 18, 22, 0.2);
+  box-shadow: 0 -5px 16px rgba(22, 18, 22, 0.14);
   overflow: hidden;
   pointer-events: none;
 }
@@ -1509,6 +1509,7 @@ h3 {
 
 .page--animation .heroBenefits {
   align-content: center;
+  gap: 18px;
 }
 
 .page--animation .practiceList article:last-child img {
